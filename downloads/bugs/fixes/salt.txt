@@ -1,0 +1,267 @@
+https://github.com/saltstack/salt/issues/61252,https://github.com/saltstack/salt/pull/61256
+https://github.com/saltstack/salt/issues/61222,https://github.com/saltstack/salt/commit/e444cf4d43 https://github.com/saltstack/salt/pull/61329
+https://github.com/saltstack/salt/issues/61200,https://github.com/saltstack/salt/commit/fe3ee16a56 https://github.com/saltstack/salt/commit/b088dce357 https://github.com/saltstack/salt/pull/61201
+https://github.com/saltstack/salt/issues/61172,https://github.com/saltstack/salt/commit/1abe05207c https://github.com/saltstack/salt/commit/5d93398a57 https://github.com/saltstack/salt/pull/61251
+https://github.com/saltstack/salt/issues/61062,https://github.com/saltstack/salt/pull/61064
+https://github.com/saltstack/salt/issues/60012,https://github.com/saltstack/salt/pull/60026
+https://github.com/saltstack/salt/issues/59844,https://github.com/saltstack/salt/pull/59997
+https://github.com/saltstack/salt/issues/59798,https://github.com/saltstack/salt/pull/59823
+https://github.com/saltstack/salt/issues/59755,https://github.com/saltstack/salt/pull/60951
+https://github.com/saltstack/salt/issues/59692,https://github.com/saltstack/salt/pull/59693
+https://github.com/saltstack/salt/issues/59276,https://github.com/saltstack/salt/pull/59282
+https://github.com/saltstack/salt/issues/59162,https://github.com/saltstack/salt/pull/59163
+https://github.com/saltstack/salt/issues/58785,https://github.com/saltstack/salt/commit/1231b463f5 https://github.com/saltstack/salt/pull/58811 https://github.com/saltstack/salt/pull/58862
+https://github.com/saltstack/salt/issues/58616,https://github.com/saltstack/salt/pull/58655
+https://github.com/saltstack/salt/issues/57973,https://github.com/saltstack/salt/pull/57976
+https://github.com/saltstack/salt/issues/57845,https://github.com/saltstack/salt/pull/57869
+https://github.com/saltstack/salt/issues/57843,https://github.com/saltstack/salt/commit/d401ad2f64 https://github.com/saltstack/salt/pull/57870
+https://github.com/saltstack/salt/issues/57811,https://github.com/saltstack/salt/pull/57836 https://github.com/saltstack/salt/pull/57579 https://github.com/saltstack/salt/pull/57743
+https://github.com/saltstack/salt/issues/57810,https://github.com/saltstack/salt/pull/57812
+https://github.com/saltstack/salt/issues/57801,https://github.com/saltstack/salt/pull/57816
+https://github.com/saltstack/salt/issues/57794,https://github.com/saltstack/salt/pull/57818
+https://github.com/saltstack/salt/issues/57787,https://github.com/saltstack/salt/pull/57859
+https://github.com/saltstack/salt/issues/57781,https://github.com/saltstack/salt/commit/b7e0500072 https://github.com/saltstack/salt/commit/878a790ece https://github.com/saltstack/salt/pull/57817
+https://github.com/saltstack/salt/issues/57718,https://github.com/saltstack/salt/commit/a6e481ea73 https://github.com/saltstack/salt/pull/57932
+https://github.com/saltstack/salt/issues/57667,https://github.com/saltstack/salt/pull/57668
+https://github.com/saltstack/salt/issues/57594,https://github.com/saltstack/salt/pull/57700
+https://github.com/saltstack/salt/issues/57550,https://github.com/saltstack/salt/pull/57886
+https://github.com/saltstack/salt/issues/57531,https://github.com/saltstack/salt/pull/57556 https://github.com/saltstack/salt/pull/57555
+https://github.com/saltstack/salt/issues/57529,https://github.com/saltstack/salt/commit/92a33352f8 https://github.com/saltstack/salt/pull/57579 https://github.com/saltstack/salt/pull/57576 https://github.com/saltstack/salt/pull/57523
+https://github.com/saltstack/salt/issues/57516,https://github.com/saltstack/salt/commit/d79f3e4718 https://github.com/saltstack/salt/pull/57883
+https://github.com/saltstack/salt/issues/57436,https://github.com/saltstack/salt/pull/57661
+https://github.com/saltstack/salt/issues/57194,https://github.com/saltstack/salt/pull/55893
+https://github.com/saltstack/salt/issues/56584,https://github.com/saltstack/salt/commit/927b8afc86 https://github.com/saltstack/salt/pull/57974 https://github.com/saltstack/salt/pull/56635
+https://github.com/saltstack/salt/issues/56296,https://github.com/saltstack/salt/pull/57700
+https://github.com/saltstack/salt/issues/56121,https://github.com/saltstack/salt/pull/56143
+https://github.com/saltstack/salt/issues/55938,https://github.com/saltstack/salt/pull/55974
+https://github.com/saltstack/salt/issues/55934,https://github.com/saltstack/salt/commit/fcb44c47d6 https://github.com/saltstack/salt/commit/040b77e17a https://github.com/saltstack/salt/pull/57380
+https://github.com/saltstack/salt/issues/55920,https://github.com/saltstack/salt/pull/55271
+https://github.com/saltstack/salt/issues/55917,https://github.com/saltstack/salt/commit/f0269932e8 https://github.com/saltstack/salt/commit/55d713720a https://github.com/saltstack/salt/commit/9d937e7c4d https://github.com/saltstack/salt/pull/55957
+https://github.com/saltstack/salt/issues/55870,https://github.com/saltstack/salt/commit/7f18c0eb6a https://github.com/saltstack/salt/pull/55885
+https://github.com/saltstack/salt/issues/55330,https://github.com/saltstack/salt/pull/56129
+https://github.com/saltstack/salt/issues/55212,https://github.com/saltstack/salt/pull/56991
+https://github.com/saltstack/salt/issues/55084,https://github.com/saltstack/salt/commit/abecdb2c98 https://github.com/saltstack/salt/pull/56958
+https://github.com/saltstack/salt/issues/54941,https://github.com/saltstack/salt/commit/69eaa0f300 https://github.com/saltstack/salt/commit/a80b55c129 https://github.com/saltstack/salt/commit/cd7c8e378b https://github.com/saltstack/salt/commit/2f817bc600 https://github.com/saltstack/salt/commit/cb5d3264d7 https://github.com/saltstack/salt/commit/348d1c4607 https://github.com/saltstack/salt/commit/766f3ca3f8 https://github.com/saltstack/salt/pull/54942
+https://github.com/saltstack/salt/issues/54520,https://github.com/saltstack/salt/pull/45164
+https://github.com/saltstack/salt/issues/54392,https://github.com/saltstack/salt/pull/53354
+https://github.com/saltstack/salt/issues/54317,https://github.com/saltstack/salt/pull/56610 https://github.com/saltstack/salt/pull/54323
+https://github.com/saltstack/salt/issues/53757,https://github.com/saltstack/salt/commit/12a638afd9 https://github.com/saltstack/salt/commit/b8dddf9f5d
+https://github.com/saltstack/salt/issues/53152,https://github.com/saltstack/salt/commit/547c73e4cc https://github.com/saltstack/salt/pull/56149
+https://github.com/saltstack/salt/issues/53039,https://github.com/saltstack/salt/pull/55908
+https://github.com/saltstack/salt/issues/52518,https://github.com/saltstack/salt/commit/3ec440fa2d https://github.com/saltstack/salt/commit/c6cfaca64f https://github.com/saltstack/salt/pull/55979 https://github.com/saltstack/salt/pull/52833
+https://github.com/saltstack/salt/issues/52350,https://github.com/saltstack/salt/commit/6040282283 https://github.com/saltstack/salt/commit/82f010ae29 https://github.com/saltstack/salt/commit/ae81fee398 https://github.com/saltstack/salt/commit/b618d44759 https://github.com/saltstack/salt/commit/b191bc0d58 https://github.com/saltstack/salt/commit/38a9818fec https://github.com/saltstack/salt/pull/52427
+https://github.com/saltstack/salt/issues/51821,https://github.com/saltstack/salt/commit/a3dc9ff329 https://github.com/saltstack/salt/commit/d3159cb6b4 https://github.com/saltstack/salt/commit/86c63b5723 https://github.com/saltstack/salt/commit/0966d61937 https://github.com/saltstack/salt/commit/081be28b90 https://github.com/saltstack/salt/pull/57766 https://github.com/saltstack/salt/pull/56626 https://github.com/saltstack/salt/pull/51937
+https://github.com/saltstack/salt/issues/51369,https://github.com/saltstack/salt/commit/f1136fe836 https://github.com/saltstack/salt/pull/51390
+https://github.com/saltstack/salt/issues/51289,https://github.com/saltstack/salt/commit/36f2905f30 https://github.com/saltstack/salt/pull/51297
+https://github.com/saltstack/salt/issues/51273,https://github.com/saltstack/salt/commit/0af4675f8d https://github.com/saltstack/salt/commit/8cca51b194 https://github.com/saltstack/salt/pull/51318 https://github.com/saltstack/salt/pull/51285
+https://github.com/saltstack/salt/issues/51258,https://github.com/saltstack/salt/commit/d6f4f055f5 https://github.com/saltstack/salt/commit/f94e721e75 https://github.com/saltstack/salt/pull/51298
+https://github.com/saltstack/salt/issues/51067,https://github.com/saltstack/salt/commit/14247345a6 https://github.com/saltstack/salt/commit/1440ccfd96 https://github.com/saltstack/salt/pull/51159
+https://github.com/saltstack/salt/issues/50854,https://github.com/saltstack/salt/pull/50855
+https://github.com/saltstack/salt/issues/50850,https://github.com/saltstack/salt/commit/216fa14fee https://github.com/saltstack/salt/pull/50859
+https://github.com/saltstack/salt/issues/50791,https://github.com/saltstack/salt/commit/80197bc49e https://github.com/saltstack/salt/commit/165d7336cd https://github.com/saltstack/salt/pull/51442 https://github.com/saltstack/salt/pull/50855
+https://github.com/saltstack/salt/issues/50254,https://github.com/saltstack/salt/commit/60b4622570 https://github.com/saltstack/salt/commit/342786bdc3 https://github.com/saltstack/salt/pull/50366 https://github.com/saltstack/salt/pull/50367
+https://github.com/saltstack/salt/issues/50221,https://github.com/saltstack/salt/commit/85c86f1341 https://github.com/saltstack/salt/commit/824950c4cd https://github.com/saltstack/salt/commit/7a97cb4f67 https://github.com/saltstack/salt/commit/f96828a9d6 https://github.com/saltstack/salt/commit/a5255f0eb2 https://github.com/saltstack/salt/commit/ac978f0647 https://github.com/saltstack/salt/pull/51252
+https://github.com/saltstack/salt/issues/50218,https://github.com/saltstack/salt/commit/7dd34386ef https://github.com/saltstack/salt/pull/50456
+https://github.com/saltstack/salt/issues/49967,https://github.com/saltstack/salt/commit/58080747e1 https://github.com/saltstack/salt/commit/1576c9980c https://github.com/saltstack/salt/pull/50280
+https://github.com/saltstack/salt/issues/49754,https://github.com/saltstack/salt/pull/49755
+https://github.com/saltstack/salt/issues/49671,https://github.com/saltstack/salt/commit/1a41d1b7b5 https://github.com/saltstack/salt/commit/a57872fdc7 https://github.com/saltstack/salt/commit/5f13219625 https://github.com/saltstack/salt/pull/49820
+https://github.com/saltstack/salt/issues/49520,https://github.com/saltstack/salt/commit/ec978061aa https://github.com/saltstack/salt/commit/30ccc5e369 https://github.com/saltstack/salt/commit/4a168f1053 https://github.com/saltstack/salt/pull/49764
+https://github.com/saltstack/salt/issues/49452,https://github.com/saltstack/salt/commit/baafd6ec85 https://github.com/saltstack/salt/commit/2fb3ef7195 https://github.com/saltstack/salt/commit/ebfd7f9079 https://github.com/saltstack/salt/pull/49487
+https://github.com/saltstack/salt/issues/49275,https://github.com/saltstack/salt/commit/7092879263 https://github.com/saltstack/salt/pull/50080
+https://github.com/saltstack/salt/issues/49226,https://github.com/saltstack/salt/pull/51366 https://github.com/saltstack/salt/pull/51367
+https://github.com/saltstack/salt/issues/49100,https://github.com/saltstack/salt/commit/21435be45f https://github.com/saltstack/salt/pull/49125 https://github.com/saltstack/salt/pull/49122
+https://github.com/saltstack/salt/issues/49043,https://github.com/saltstack/salt/commit/aca87abe40 https://github.com/saltstack/salt/commit/b7d904f4bb https://github.com/saltstack/salt/commit/2a901e960d https://github.com/saltstack/salt/pull/49782
+https://github.com/saltstack/salt/issues/48996,https://github.com/saltstack/salt/commit/4eeb75f028 https://github.com/saltstack/salt/pull/49033
+https://github.com/saltstack/salt/issues/48665,https://github.com/saltstack/salt/commit/e78fc0e0eb https://github.com/saltstack/salt/pull/48901
+https://github.com/saltstack/salt/issues/48336,https://github.com/saltstack/salt/commit/a9dc758e73 https://github.com/saltstack/salt/commit/acf42864aa https://github.com/saltstack/salt/pull/48398 https://github.com/saltstack/salt/pull/48399
+https://github.com/saltstack/salt/issues/48320,https://github.com/saltstack/salt/pull/48358
+https://github.com/saltstack/salt/issues/48204,https://github.com/saltstack/salt/commit/5b41af3e66 https://github.com/saltstack/salt/commit/18fb5df639 https://github.com/saltstack/salt/commit/92c06800e0 https://github.com/saltstack/salt/commit/09b036c26e https://github.com/saltstack/salt/pull/53418 https://github.com/saltstack/salt/pull/51530 https://github.com/saltstack/salt/pull/49918 https://github.com/saltstack/salt/pull/48275 https://github.com/saltstack/salt/pull/48228
+https://github.com/saltstack/salt/issues/48184,https://github.com/saltstack/salt/commit/5bbbdc74cd https://github.com/saltstack/salt/pull/55457 https://github.com/saltstack/salt/pull/55450 https://github.com/saltstack/salt/pull/48440 https://github.com/saltstack/salt/pull/48216
+https://github.com/saltstack/salt/issues/48130,https://github.com/saltstack/salt/pull/48158 https://github.com/saltstack/salt/pull/48157
+https://github.com/saltstack/salt/issues/48122,https://github.com/saltstack/salt/commit/b965d6c9b3 https://github.com/saltstack/salt/commit/96c59f3d93 https://github.com/saltstack/salt/pull/48189
+https://github.com/saltstack/salt/issues/48078,https://github.com/saltstack/salt/pull/48304
+https://github.com/saltstack/salt/issues/48038,https://github.com/saltstack/salt/commit/d6d2c5ee18 https://github.com/saltstack/salt/pull/48075
+https://github.com/saltstack/salt/issues/48029,https://github.com/saltstack/salt/commit/f7652d8c8b https://github.com/saltstack/salt/pull/48030 https://github.com/saltstack/salt/pull/48034
+https://github.com/saltstack/salt/issues/48020,https://github.com/saltstack/salt/commit/7183a6e0e8 https://github.com/saltstack/salt/pull/48765
+https://github.com/saltstack/salt/issues/48012,https://github.com/saltstack/salt/commit/c05c176782 https://github.com/saltstack/salt/pull/48081
+https://github.com/saltstack/salt/issues/47955,https://github.com/saltstack/salt/commit/0545152ddd https://github.com/saltstack/salt/commit/6c8daa2b85 https://github.com/saltstack/salt/pull/47989
+https://github.com/saltstack/salt/issues/47921,https://github.com/saltstack/salt/commit/da66e1af7c https://github.com/saltstack/salt/commit/68e56c1502 https://github.com/saltstack/salt/pull/49325 https://github.com/saltstack/salt/pull/47964 https://github.com/saltstack/salt/pull/47133
+https://github.com/saltstack/salt/issues/47905,https://github.com/saltstack/salt/pull/47924
+https://github.com/saltstack/salt/issues/47766,https://github.com/saltstack/salt/commit/4cb1636c4b https://github.com/saltstack/salt/pull/48956
+https://github.com/saltstack/salt/issues/47715,https://github.com/saltstack/salt/pull/47727
+https://github.com/saltstack/salt/issues/47695,https://github.com/saltstack/salt/commit/d353c02a8c https://github.com/saltstack/salt/pull/49019
+https://github.com/saltstack/salt/issues/47258,https://github.com/saltstack/salt/pull/47271
+https://github.com/saltstack/salt/issues/47199,https://github.com/saltstack/salt/commit/b5d64f1a70 https://github.com/saltstack/salt/pull/47275
+https://github.com/saltstack/salt/issues/47150,https://github.com/saltstack/salt/commit/7f1115e611 https://github.com/saltstack/salt/pull/47191
+https://github.com/saltstack/salt/issues/46953,https://github.com/saltstack/salt/commit/79347f108a https://github.com/saltstack/salt/commit/5192622a32 https://github.com/saltstack/salt/pull/47012
+https://github.com/saltstack/salt/issues/46931,https://github.com/saltstack/salt/pull/47046
+https://github.com/saltstack/salt/issues/46929,https://github.com/saltstack/salt/commit/b96ce23b3f https://github.com/saltstack/salt/pull/47104
+https://github.com/saltstack/salt/issues/46859,https://github.com/saltstack/salt/commit/c12697b173 https://github.com/saltstack/salt/commit/ac2d54d78a https://github.com/saltstack/salt/pull/47029 https://github.com/saltstack/salt/pull/47076
+https://github.com/saltstack/salt/issues/46834,https://github.com/saltstack/salt/pull/46848
+https://github.com/saltstack/salt/issues/46781,https://github.com/saltstack/salt/pull/46782
+https://github.com/saltstack/salt/issues/46779,https://github.com/saltstack/salt/commit/4f31c1062d https://github.com/saltstack/salt/pull/46796
+https://github.com/saltstack/salt/issues/46762,https://github.com/saltstack/salt/commit/058bbed221 https://github.com/saltstack/salt/commit/c935ffb740 https://github.com/saltstack/salt/pull/46799 https://github.com/saltstack/salt/pull/46788
+https://github.com/saltstack/salt/issues/46716,https://github.com/saltstack/salt/commit/223bb4f8fd https://github.com/saltstack/salt/commit/815c39b1f3 https://github.com/saltstack/salt/commit/b621962df2 https://github.com/saltstack/salt/pull/46723
+https://github.com/saltstack/salt/issues/46672,https://github.com/saltstack/salt/commit/fac114326b https://github.com/saltstack/salt/commit/d2672f0db9 https://github.com/saltstack/salt/pull/46705
+https://github.com/saltstack/salt/issues/46341,https://github.com/saltstack/salt/pull/46399
+https://github.com/saltstack/salt/issues/46335,https://github.com/saltstack/salt/commit/218b7f7a08 https://github.com/saltstack/salt/pull/46401
+https://github.com/saltstack/salt/issues/46274,https://github.com/saltstack/salt/commit/5416fcf6dc https://github.com/saltstack/salt/pull/46275
+https://github.com/saltstack/salt/issues/46085,https://github.com/saltstack/salt/commit/713374b7ab https://github.com/saltstack/salt/commit/8d36730ef7 https://github.com/saltstack/salt/pull/46123
+https://github.com/saltstack/salt/issues/45960,https://github.com/saltstack/salt/commit/175c8be882 https://github.com/saltstack/salt/pull/45999
+https://github.com/saltstack/salt/issues/45956,https://github.com/saltstack/salt/commit/1a50abb3b4 https://github.com/saltstack/salt/commit/82fc5b49b9 https://github.com/saltstack/salt/pull/46032
+https://github.com/saltstack/salt/issues/45954,https://github.com/saltstack/salt/commit/652e59eb77 https://github.com/saltstack/salt/pull/45998
+https://github.com/saltstack/salt/issues/45886,https://github.com/saltstack/salt/pull/45937
+https://github.com/saltstack/salt/issues/45790,https://github.com/saltstack/salt/commit/e0a419655b https://github.com/saltstack/salt/commit/b94d73c53e https://github.com/saltstack/salt/commit/6dc1a3b9dc https://github.com/saltstack/salt/pull/47106 https://github.com/saltstack/salt/pull/47433 https://github.com/saltstack/salt/pull/46066 https://github.com/saltstack/salt/pull/46002
+https://github.com/saltstack/salt/issues/45550,https://github.com/saltstack/salt/pull/45647
+https://github.com/saltstack/salt/issues/45243,https://github.com/saltstack/salt/commit/0e2666bee5 https://github.com/saltstack/salt/commit/a0722fa934 https://github.com/saltstack/salt/commit/5d15ae368c https://github.com/saltstack/salt/pull/45326
+https://github.com/saltstack/salt/issues/45023,https://github.com/saltstack/salt/pull/45931
+https://github.com/saltstack/salt/issues/44978,https://github.com/saltstack/salt/commit/900aadcd67 https://github.com/saltstack/salt/commit/adeb7fed88 https://github.com/saltstack/salt/commit/3fc33c4bb0 https://github.com/saltstack/salt/pull/45721
+https://github.com/saltstack/salt/issues/44829,https://github.com/saltstack/salt/commit/4bc1771fe9 https://github.com/saltstack/salt/pull/44835
+https://github.com/saltstack/salt/issues/44728,https://github.com/saltstack/salt/commit/d3381e27d0 https://github.com/saltstack/salt/pull/45118
+https://github.com/saltstack/salt/issues/44670,https://github.com/saltstack/salt/commit/887336c6de https://github.com/saltstack/salt/pull/44691 https://github.com/saltstack/salt/pull/44764
+https://github.com/saltstack/salt/issues/43949,https://github.com/saltstack/salt/commit/a37e0bad62 https://github.com/saltstack/salt/commit/4ce20bb2f7 https://github.com/saltstack/salt/pull/43950
+https://github.com/saltstack/salt/issues/43665,https://github.com/saltstack/salt/pull/43666 https://github.com/saltstack/salt/pull/43669
+https://github.com/saltstack/salt/issues/43340,https://github.com/saltstack/salt/pull/45255 https://github.com/saltstack/salt/pull/44427
+https://github.com/saltstack/salt/issues/43077,https://github.com/saltstack/salt/commit/56b671e087 https://github.com/saltstack/salt/pull/43330 https://github.com/saltstack/salt/pull/42595
+https://github.com/saltstack/salt/issues/42753,https://github.com/saltstack/salt/commit/c6a7bf02e9 https://github.com/saltstack/salt/pull/42848
+https://github.com/saltstack/salt/issues/42668,https://github.com/saltstack/salt/pull/42710
+https://github.com/saltstack/salt/issues/42646,https://github.com/saltstack/salt/pull/42778
+https://github.com/saltstack/salt/issues/42459,https://github.com/saltstack/salt/commit/ece0e393ef https://github.com/saltstack/salt/pull/43283
+https://github.com/saltstack/salt/issues/42403,https://github.com/saltstack/salt/commit/82982f940d https://github.com/saltstack/salt/pull/42433
+https://github.com/saltstack/salt/issues/42400,https://github.com/saltstack/salt/pull/42429 https://github.com/saltstack/salt/pull/42031
+https://github.com/saltstack/salt/issues/42374,https://github.com/saltstack/salt/commit/09521602c1 https://github.com/saltstack/salt/pull/42436 https://github.com/saltstack/salt/pull/42401
+https://github.com/saltstack/salt/issues/42120,https://github.com/saltstack/salt/pull/37222
+https://github.com/saltstack/salt/issues/41778,https://github.com/saltstack/salt/commit/938d4fddf1 https://github.com/saltstack/salt/commit/2ffd20cede https://github.com/saltstack/salt/pull/41787
+https://github.com/saltstack/salt/issues/41720,https://github.com/saltstack/salt/pull/42529
+https://github.com/saltstack/salt/issues/41527,https://github.com/saltstack/salt/commit/53ecb5c4b0 https://github.com/saltstack/salt/pull/41553
+https://github.com/saltstack/salt/issues/41507,https://github.com/saltstack/salt/commit/fc732baa43 https://github.com/saltstack/salt/pull/41541
+https://github.com/saltstack/salt/issues/41428,https://github.com/saltstack/salt/pull/41512
+https://github.com/saltstack/salt/issues/41410,https://github.com/saltstack/salt/commit/9480edd5bb https://github.com/saltstack/salt/commit/29702a3397 https://github.com/saltstack/salt/pull/41514
+https://github.com/saltstack/salt/issues/41353,https://github.com/saltstack/salt/commit/b98d5e00d4 https://github.com/saltstack/salt/pull/41431
+https://github.com/saltstack/salt/issues/40940,https://github.com/saltstack/salt/commit/50d8fde123 https://github.com/saltstack/salt/pull/41047 https://github.com/saltstack/salt/pull/41101
+https://github.com/saltstack/salt/issues/40937,https://github.com/saltstack/salt/commit/eb0e40a867 https://github.com/saltstack/salt/pull/41014
+https://github.com/saltstack/salt/issues/40881,https://github.com/saltstack/salt/commit/9942ea9319 https://github.com/saltstack/salt/commit/ab9da90ced https://github.com/saltstack/salt/pull/40935
+https://github.com/saltstack/salt/issues/40845,https://github.com/saltstack/salt/commit/6be975da2c https://github.com/saltstack/salt/commit/fb607bab75 https://github.com/saltstack/salt/pull/41786 https://github.com/saltstack/salt/pull/40894 https://github.com/saltstack/salt/pull/41104
+https://github.com/saltstack/salt/issues/40748,https://github.com/saltstack/salt/commit/29bd7f48b7 https://github.com/saltstack/salt/commit/4550c3ce49 https://github.com/saltstack/salt/pull/41287
+https://github.com/saltstack/salt/issues/40594,https://github.com/saltstack/salt/commit/6c4ae3c914 https://github.com/saltstack/salt/pull/40642
+https://github.com/saltstack/salt/issues/40517,https://github.com/saltstack/salt/commit/143dad59af https://github.com/saltstack/salt/commit/3b95ef2345 https://github.com/saltstack/salt/pull/41408 https://github.com/saltstack/salt/pull/56310 https://github.com/saltstack/salt/pull/39611
+https://github.com/saltstack/salt/issues/40437,https://github.com/saltstack/salt/commit/7fdeb9094d https://github.com/saltstack/salt/commit/07b2dbeb48 https://github.com/saltstack/salt/pull/40568
+https://github.com/saltstack/salt/issues/40278,https://github.com/saltstack/salt/commit/b1698e830e https://github.com/saltstack/salt/commit/c978486452 https://github.com/saltstack/salt/pull/40572
+https://github.com/saltstack/salt/issues/40022,https://github.com/saltstack/salt/commit/c1408205ba https://github.com/saltstack/salt/pull/40103
+https://github.com/saltstack/salt/issues/40011,https://github.com/saltstack/salt/commit/837432d3d2 https://github.com/saltstack/salt/commit/5b5d1b375c https://github.com/saltstack/salt/pull/40041
+https://github.com/saltstack/salt/issues/40005,https://github.com/saltstack/salt/commit/cb9dcb1e1b https://github.com/saltstack/salt/commit/1ef81e6a55 https://github.com/saltstack/salt/pull/40543
+https://github.com/saltstack/salt/issues/39993,https://github.com/saltstack/salt/pull/40548
+https://github.com/saltstack/salt/issues/39892,https://github.com/saltstack/salt/commit/cfba4cb422 https://github.com/saltstack/salt/commit/ad88c58a09 https://github.com/saltstack/salt/pull/40534
+https://github.com/saltstack/salt/issues/39779,https://github.com/saltstack/salt/commit/14d71918b2 https://github.com/saltstack/salt/pull/40034
+https://github.com/saltstack/salt/issues/39599,https://github.com/saltstack/salt/pull/40898
+https://github.com/saltstack/salt/issues/39368,https://github.com/saltstack/salt/commit/5c53b6d24a https://github.com/saltstack/salt/pull/39558 https://github.com/saltstack/salt/pull/39382 https://github.com/saltstack/salt/pull/39682
+https://github.com/saltstack/salt/issues/39336,https://github.com/saltstack/salt/pull/39766
+https://github.com/saltstack/salt/issues/39333,https://github.com/saltstack/salt/pull/39791
+https://github.com/saltstack/salt/issues/39257,https://github.com/saltstack/salt/pull/43907
+https://github.com/saltstack/salt/issues/38932,https://github.com/saltstack/salt/pull/39005
+https://github.com/saltstack/salt/issues/38907,https://github.com/saltstack/salt/pull/38565
+https://github.com/saltstack/salt/issues/38856,https://github.com/saltstack/salt/pull/39228
+https://github.com/saltstack/salt/issues/38830,https://github.com/saltstack/salt/commit/a0b671ea43 https://github.com/saltstack/salt/commit/68d6449174 https://github.com/saltstack/salt/pull/38943
+https://github.com/saltstack/salt/issues/38742,https://github.com/saltstack/salt/commit/083d42ea31 https://github.com/saltstack/salt/pull/38745
+https://github.com/saltstack/salt/issues/38641,https://github.com/saltstack/salt/pull/39205 https://github.com/saltstack/salt/pull/36525
+https://github.com/saltstack/salt/issues/38458,https://github.com/saltstack/salt/commit/8367735063 https://github.com/saltstack/salt/pull/40442
+https://github.com/saltstack/salt/issues/38388,https://github.com/saltstack/salt/commit/1033bbdde8 https://github.com/saltstack/salt/commit/9bd203ffcc https://github.com/saltstack/salt/pull/38808 https://github.com/saltstack/salt/pull/38815
+https://github.com/saltstack/salt/issues/38287,https://github.com/saltstack/salt/pull/38316
+https://github.com/saltstack/salt/issues/38274,https://github.com/saltstack/salt/pull/37967
+https://github.com/saltstack/salt/issues/38246,https://github.com/saltstack/salt/pull/39279 https://github.com/saltstack/salt/pull/38247
+https://github.com/saltstack/salt/issues/38125,https://github.com/saltstack/salt/pull/40433
+https://github.com/saltstack/salt/issues/38121,https://github.com/saltstack/salt/commit/bbf4eacbba https://github.com/saltstack/salt/commit/c7fc09f97d https://github.com/saltstack/salt/commit/8f5fc49fcc https://github.com/saltstack/salt/commit/8ad47e7801 https://github.com/saltstack/salt/pull/39930 https://github.com/saltstack/salt/pull/39932
+https://github.com/saltstack/salt/issues/38048,https://github.com/saltstack/salt/commit/9b37ead913 https://github.com/saltstack/salt/pull/38073
+https://github.com/saltstack/salt/issues/37966,https://github.com/saltstack/salt/pull/37967
+https://github.com/saltstack/salt/issues/37754,https://github.com/saltstack/salt/pull/37757
+https://github.com/saltstack/salt/issues/37605,https://github.com/saltstack/salt/commit/8e5610667f https://github.com/saltstack/salt/pull/37623
+https://github.com/saltstack/salt/issues/37573,https://github.com/saltstack/salt/commit/b3736561de https://github.com/saltstack/salt/pull/55253
+https://github.com/saltstack/salt/issues/37541,https://github.com/saltstack/salt/commit/a97c2ad34b https://github.com/saltstack/salt/commit/24d7f20e16 https://github.com/saltstack/salt/pull/37640 https://github.com/saltstack/salt/pull/37540
+https://github.com/saltstack/salt/issues/37528,https://github.com/saltstack/salt/pull/37550
+https://github.com/saltstack/salt/issues/37468,https://github.com/saltstack/salt/commit/c604e62703 https://github.com/saltstack/salt/commit/d1afbf05f7 https://github.com/saltstack/salt/commit/0ee447354d https://github.com/saltstack/salt/pull/37687 https://github.com/saltstack/salt/pull/37716
+https://github.com/saltstack/salt/issues/36802,https://github.com/saltstack/salt/commit/af45c49c42 https://github.com/saltstack/salt/commit/eb822f5a12 https://github.com/saltstack/salt/pull/46632
+https://github.com/saltstack/salt/issues/36713,https://github.com/saltstack/salt/commit/2d924d0820 https://github.com/saltstack/salt/commit/5f7f971b2c https://github.com/saltstack/salt/pull/37503
+https://github.com/saltstack/salt/issues/36612,https://github.com/saltstack/salt/pull/36618
+https://github.com/saltstack/salt/issues/36491,https://github.com/saltstack/salt/pull/36495
+https://github.com/saltstack/salt/issues/36461,https://github.com/saltstack/salt/commit/7547761acc https://github.com/saltstack/salt/pull/36462
+https://github.com/saltstack/salt/issues/34551,https://github.com/saltstack/salt/commit/249efa3068 https://github.com/saltstack/salt/pull/38950
+https://github.com/saltstack/salt/issues/34439,https://github.com/saltstack/salt/pull/34490
+https://github.com/saltstack/salt/issues/33709,https://github.com/saltstack/salt/commit/c62ff6b023 https://github.com/saltstack/salt/pull/37767
+https://github.com/saltstack/salt/issues/33565,https://github.com/saltstack/salt/commit/afd3c1b9bd https://github.com/saltstack/salt/commit/9f7d81e0cc https://github.com/saltstack/salt/pull/33576
+https://github.com/saltstack/salt/issues/33530,https://github.com/saltstack/salt/commit/71145ddda7 https://github.com/saltstack/salt/commit/b906859fce https://github.com/saltstack/salt/pull/33549
+https://github.com/saltstack/salt/issues/33162,https://github.com/saltstack/salt/commit/b71c3fe13c https://github.com/saltstack/salt/pull/39784 https://github.com/saltstack/salt/pull/33164
+https://github.com/saltstack/salt/issues/32201,https://github.com/saltstack/salt/commit/b706d3aa4d https://github.com/saltstack/salt/pull/32373
+https://github.com/saltstack/salt/issues/32198,https://github.com/saltstack/salt/commit/730bec1eef https://github.com/saltstack/salt/commit/f86832911e https://github.com/saltstack/salt/pull/38249 https://github.com/saltstack/salt/pull/33205
+https://github.com/saltstack/salt/issues/31791,https://github.com/saltstack/salt/pull/31846
+https://github.com/saltstack/salt/issues/31435,https://github.com/saltstack/salt/pull/41473
+https://github.com/saltstack/salt/issues/30643,https://github.com/saltstack/salt/commit/d5a4daa17b https://github.com/saltstack/salt/pull/31525 https://github.com/saltstack/salt/pull/31512
+https://github.com/saltstack/salt/issues/30367,https://github.com/saltstack/salt/commit/a0bf565741 https://github.com/saltstack/salt/commit/09242697b8 https://github.com/saltstack/salt/pull/47843
+https://github.com/saltstack/salt/issues/30087,https://github.com/saltstack/salt/pull/46022
+https://github.com/saltstack/salt/issues/29110,https://github.com/saltstack/salt/commit/2250a36647 https://github.com/saltstack/salt/commit/4b9302d794 https://github.com/saltstack/salt/pull/29122
+https://github.com/saltstack/salt/issues/29028,https://github.com/saltstack/salt/commit/bd9ae07865 https://github.com/saltstack/salt/pull/50655 https://github.com/saltstack/salt/pull/54878 https://github.com/saltstack/salt/pull/45782 https://github.com/saltstack/salt/pull/39948 https://github.com/saltstack/salt/pull/37795
+https://github.com/saltstack/salt/issues/28883,https://github.com/saltstack/salt/pull/29113 https://github.com/saltstack/salt/pull/28740
+https://github.com/saltstack/salt/issues/28339,https://github.com/saltstack/salt/commit/5eef9d5067 https://github.com/saltstack/salt/commit/b160a7d1b2 https://github.com/saltstack/salt/pull/28431 https://github.com/saltstack/salt/pull/28189 https://github.com/saltstack/salt/pull/28423
+https://github.com/saltstack/salt/issues/28259,https://github.com/saltstack/salt/commit/422c1d1772 https://github.com/saltstack/salt/commit/546229ec79 https://github.com/saltstack/salt/pull/28419
+https://github.com/saltstack/salt/issues/27866,https://github.com/saltstack/salt/pull/31029
+https://github.com/saltstack/salt/issues/27281,https://github.com/saltstack/salt/commit/c05fa71f91 https://github.com/saltstack/salt/pull/27517 https://github.com/saltstack/salt/pull/29102
+https://github.com/saltstack/salt/issues/27229,https://github.com/saltstack/salt/pull/27213
+https://github.com/saltstack/salt/issues/26932,https://github.com/saltstack/salt/pull/26949
+https://github.com/saltstack/salt/issues/26850,https://github.com/saltstack/salt/commit/5a4c8dd2f5 https://github.com/saltstack/salt/commit/2b2959d5fd https://github.com/saltstack/salt/commit/3cc84ecbf7 https://github.com/saltstack/salt/pull/26852
+https://github.com/saltstack/salt/issues/26839,https://github.com/saltstack/salt/commit/a25c9a33d0 https://github.com/saltstack/salt/commit/8b6a7b0d65 https://github.com/saltstack/salt/pull/26970
+https://github.com/saltstack/salt/issues/26705,https://github.com/saltstack/salt/commit/ebcfaf9050 https://github.com/saltstack/salt/pull/26714
+https://github.com/saltstack/salt/issues/26672,https://github.com/saltstack/salt/commit/063f0c500b https://github.com/saltstack/salt/pull/28367
+https://github.com/saltstack/salt/issues/26051,https://github.com/saltstack/salt/pull/28530
+https://github.com/saltstack/salt/issues/26040,https://github.com/saltstack/salt/commit/a66f3eb8f1 https://github.com/saltstack/salt/commit/b3a6253b2c https://github.com/saltstack/salt/pull/26078
+https://github.com/saltstack/salt/issues/25847,https://github.com/saltstack/salt/commit/f61d9facdb
+https://github.com/saltstack/salt/issues/25800,https://github.com/saltstack/salt/pull/44578
+https://github.com/saltstack/salt/issues/25773,https://github.com/saltstack/salt/commit/ee786293e7
+https://github.com/saltstack/salt/issues/25757,https://github.com/saltstack/salt/pull/25830 https://github.com/saltstack/salt/pull/25820 https://github.com/saltstack/salt/pull/25819 https://github.com/saltstack/salt/pull/25730
+https://github.com/saltstack/salt/issues/25756,https://github.com/saltstack/salt/pull/25923 https://github.com/saltstack/salt/pull/25946 https://github.com/saltstack/salt/pull/25730
+https://github.com/saltstack/salt/issues/25732,https://github.com/saltstack/salt/commit/7bb93fed76 https://github.com/saltstack/salt/pull/25736
+https://github.com/saltstack/salt/issues/25581,https://github.com/saltstack/salt/commit/9f4e78a7b9 https://github.com/saltstack/salt/commit/843c28b435 https://github.com/saltstack/salt/commit/bfcaab9ef4 https://github.com/saltstack/salt/pull/27025
+https://github.com/saltstack/salt/issues/25454,https://github.com/saltstack/salt/commit/c63a6c206f https://github.com/saltstack/salt/pull/25498
+https://github.com/saltstack/salt/issues/25270,https://github.com/saltstack/salt/commit/e7a52354fc https://github.com/saltstack/salt/commit/ab6aaa6e60 https://github.com/saltstack/salt/pull/25506 https://github.com/saltstack/salt/pull/25508 https://github.com/saltstack/salt/pull/25507
+https://github.com/saltstack/salt/issues/25250,https://github.com/saltstack/salt/commit/fb4744b2f8 https://github.com/saltstack/salt/commit/24f653e963 https://github.com/saltstack/salt/pull/51740 https://github.com/saltstack/salt/pull/25710 https://github.com/saltstack/salt/pull/25461
+https://github.com/saltstack/salt/issues/25124,https://github.com/saltstack/salt/commit/76cf064dc0 https://github.com/saltstack/salt/commit/9509d8838b https://github.com/saltstack/salt/commit/4ee13b3f18 https://github.com/saltstack/salt/pull/26918
+https://github.com/saltstack/salt/issues/24915,https://github.com/saltstack/salt/commit/a11e4c6eea https://github.com/saltstack/salt/pull/24944
+https://github.com/saltstack/salt/issues/24758,https://github.com/saltstack/salt/commit/e129e889ad https://github.com/saltstack/salt/commit/78f4894333 https://github.com/saltstack/salt/pull/28662 https://github.com/saltstack/salt/pull/12675
+https://github.com/saltstack/salt/issues/24712,https://github.com/saltstack/salt/pull/12598
+https://github.com/saltstack/salt/issues/24096,https://github.com/saltstack/salt/pull/24364
+https://github.com/saltstack/salt/issues/24085,https://github.com/saltstack/salt/pull/28812 https://github.com/saltstack/salt/pull/24531
+https://github.com/saltstack/salt/issues/24073,https://github.com/saltstack/salt/pull/24451 https://github.com/saltstack/salt/pull/24492
+https://github.com/saltstack/salt/issues/24052,https://github.com/saltstack/salt/commit/1c91a2176f https://github.com/saltstack/salt/commit/b2259a6370 https://github.com/saltstack/salt/pull/24144 https://github.com/saltstack/salt/pull/24089
+https://github.com/saltstack/salt/issues/24009,https://github.com/saltstack/salt/commit/7790408c3c https://github.com/saltstack/salt/pull/24077
+https://github.com/saltstack/salt/issues/23943,https://github.com/saltstack/salt/pull/23944
+https://github.com/saltstack/salt/issues/23785,https://github.com/saltstack/salt/pull/23951
+https://github.com/saltstack/salt/issues/23695,https://github.com/saltstack/salt/commit/6dc4c4a310 https://github.com/saltstack/salt/commit/05a10f8690 https://github.com/saltstack/salt/pull/23726 https://github.com/saltstack/salt/pull/24051
+https://github.com/saltstack/salt/issues/23452,https://github.com/saltstack/salt/commit/84e2ef88fc https://github.com/saltstack/salt/commit/45b4015d7d https://github.com/saltstack/salt/pull/23639
+https://github.com/saltstack/salt/issues/23342,https://github.com/saltstack/salt/commit/b3fa8fefcb https://github.com/saltstack/salt/pull/24382
+https://github.com/saltstack/salt/issues/23240,https://github.com/saltstack/salt/pull/23375
+https://github.com/saltstack/salt/issues/23196,https://github.com/saltstack/salt/pull/54665 https://github.com/saltstack/salt/pull/24075
+https://github.com/saltstack/salt/issues/23166,https://github.com/saltstack/salt/commit/72066e1073 https://github.com/saltstack/salt/pull/23180
+https://github.com/saltstack/salt/issues/23047,https://github.com/saltstack/salt/commit/29275c5f16 https://github.com/saltstack/salt/pull/24450
+https://github.com/saltstack/salt/issues/22725,https://github.com/saltstack/salt/pull/22719
+https://github.com/saltstack/salt/issues/22720,https://github.com/saltstack/salt/pull/22728
+https://github.com/saltstack/salt/issues/22512,https://github.com/saltstack/salt/commit/23d80d84d2 https://github.com/saltstack/salt/commit/5d48bc3c07 https://github.com/saltstack/salt/pull/22916
+https://github.com/saltstack/salt/issues/21640,https://github.com/saltstack/salt/pull/24187
+https://github.com/saltstack/salt/issues/21460,https://github.com/saltstack/salt/commit/0c854ee90d https://github.com/saltstack/salt/pull/21508
+https://github.com/saltstack/salt/issues/20362,https://github.com/saltstack/salt/commit/639b1a81f7 https://github.com/saltstack/salt/pull/20611
+https://github.com/saltstack/salt/issues/20004,https://github.com/saltstack/salt/pull/46401 https://github.com/saltstack/salt/pull/19552
+https://github.com/saltstack/salt/issues/19540,https://github.com/saltstack/salt/commit/22c8a42180 https://github.com/saltstack/salt/pull/19552 https://github.com/saltstack/salt/pull/12519
+https://github.com/saltstack/salt/issues/18584,https://github.com/saltstack/salt/commit/95077e8464 https://github.com/saltstack/salt/pull/18894
+https://github.com/saltstack/salt/issues/18515,https://github.com/saltstack/salt/commit/473c3accdd https://github.com/saltstack/salt/pull/19350
+https://github.com/saltstack/salt/issues/18453,https://github.com/saltstack/salt/pull/18485
+https://github.com/saltstack/salt/issues/18113,https://github.com/saltstack/salt/pull/18148 https://github.com/saltstack/salt/pull/18142
+https://github.com/saltstack/salt/issues/18052,https://github.com/saltstack/salt/commit/8cbd97c571 https://github.com/saltstack/salt/pull/18345
+https://github.com/saltstack/salt/issues/17967,https://github.com/saltstack/salt/commit/4a168f1053
+https://github.com/saltstack/salt/issues/17955,https://github.com/saltstack/salt/commit/a7d757ba18 https://github.com/saltstack/salt/commit/56e92b7c72 https://github.com/saltstack/salt/pull/45298 https://github.com/saltstack/salt/pull/17961
+https://github.com/saltstack/salt/issues/17194,https://github.com/saltstack/salt/commit/57ddc2d0fd
+https://github.com/saltstack/salt/issues/17055,https://github.com/saltstack/salt/commit/febd925453 https://github.com/saltstack/salt/pull/17069
+https://github.com/saltstack/salt/issues/17010,https://github.com/saltstack/salt/commit/3d1c4ce126 https://github.com/saltstack/salt/commit/fc59d5e832
+https://github.com/saltstack/salt/issues/16530,https://github.com/saltstack/salt/pull/16561
+https://github.com/saltstack/salt/issues/16455,https://github.com/saltstack/salt/commit/9e000ff512 https://github.com/saltstack/salt/pull/27289 https://github.com/saltstack/salt/pull/16557
+https://github.com/saltstack/salt/issues/16240,https://github.com/saltstack/salt/commit/21aeecef5e https://github.com/saltstack/salt/commit/98af66bbf3 https://github.com/saltstack/salt/commit/75bf64f8bd https://github.com/saltstack/salt/pull/16242
+https://github.com/saltstack/salt/issues/16106,https://github.com/saltstack/salt/commit/0cff0bdc43 https://github.com/saltstack/salt/commit/c98d0304e9 https://github.com/saltstack/salt/pull/16226 https://github.com/saltstack/salt/pull/16238
+https://github.com/saltstack/salt/issues/15436,https://github.com/saltstack/salt/commit/ba934f99f4 https://github.com/saltstack/salt/pull/15443 https://github.com/saltstack/salt/pull/15454
+https://github.com/saltstack/salt/issues/9411,https://github.com/saltstack/salt/commit/05a9ff129c https://github.com/saltstack/salt/commit/a962efc009 https://github.com/saltstack/salt/commit/415102f346 https://github.com/saltstack/salt/commit/8fcccf1da0 https://github.com/saltstack/salt/commit/d598a8074e https://github.com/saltstack/salt/pull/16877
+
