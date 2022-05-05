@@ -19,3 +19,4 @@ echo "This requires some time. Please bear with us ..."
 ./find_fixes.sh $DOWNLOADS/bugs \
         $DOWNLOADS/bugs/fixes/bug_issue_descriptions $DOWNLOADS/repos \
         $DOWNLOADS/bugs/fixes $GH_TOKEN 2>&1 | tee $DOWNLOADS/logs
+echo "Done!"

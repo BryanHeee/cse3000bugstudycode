@@ -1,0 +1,323 @@
+### Description of Issue/Question
+
+After upgrading from 2015.8.7 to 2016.3.0, state.highstate runs take at least twice as long, but only when initiated from the master. 
+
+On 2016.3.0 I noticed that the salt-minion pegged the CPU at 100% for about half the run. On 2015.8.7, the CPU only jumped up to 40% max for a very brief interval.
+### Setup
+- **Minion Config**:
+
+```
+id: NODE_NAME.example.com
+master: node1.example.com
+backup_mode: minion
+log_level: warning
+startup_states: highstate
+state_output: changes
+tcp_keepalive: True
+tcp_keepalive_idle: 120
+tcp_keepalive_cnt: 5
+tcp_keepalive_intvl: 45
+```
+- **Master Config**:
+
+```
+extension_modules: /salt/ext
+ext_pillar:
+  - salt: placeholder
+file_roots:
+  base:
+    - /salt/states
+pillar_opts: False
+pillar_roots:
+  base:
+    - /salt/pillar
+pki_dir: /salt/keys
+job_cache: True
+keep_jobs: 24
+minion_data_cache: True
+state_output: mixed
+state_verbose: False
+timeout: 10
+worker_threads: 10
+```
+### Steps to Reproduce Issue
+#### 2016.3.0
+- **salt (master): 0m56.938s**
+- **salt-call (minion): 0m30.361s**
+
+```
+<bash>$ salt --version
+salt 2016.3.0 (Boron)
+
+<bash>$ time salt -v '*node1*' state.highstate -l trace
+
+[DEBUG   ] Reading configuration from /etc/salt/master
+[DEBUG   ] Missing configuration file: /home/USER_NAME/.saltrc
+[TRACE   ] None of the required configuration sections, 'logstash_udp_handler' and 'logstash_zmq_handler', were found in the configuration. Not loading the Logstash logging handlers module.
+[TRACE   ] The required configuration section, 'fluent_handler', was not found the in the configuration. Not loading the fluent logging handlers module.
+[DEBUG   ] Configuration file path: /etc/salt/master
+[DEBUG   ] Reading configuration from /etc/salt/master
+[DEBUG   ] Missing configuration file: /home/USER_NAME/.saltrc
+[DEBUG   ] MasterEvent PUB socket URI: /var/run/salt/master/master_event_pub.ipc
+[DEBUG   ] MasterEvent PULL socket URI: /var/run/salt/master/master_event_pull.ipc
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] Inserted key into loop_instance_map id 139665750523848 for key ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear') and process 17919
+[DEBUG   ] Initializing new IPCClient for path: /var/run/salt/master/master_event_pub.ipc
+[TRACE   ] IPCClient: Connecting to socket: /var/run/salt/master/master_event_pub.ipc
+[TRACE   ] func get_cli_event_returns()
+[DEBUG   ] LazyLoaded local_cache.get_load
+[DEBUG   ] Reading minion list from /var/cache/salt/master/jobs/56/2b9b2f64920f3f71fa4c6ed957abd7/.minions.p
+[DEBUG   ] get_iter_returns for jid 20160613211711655157 sent to set(['node1.example.com']) will timeout at 21:17:21.677917
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613211711655157/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211711655157', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:11.655757', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE repeats 90 times
+
+[DEBUG   ] Checking whether jid 20160613211711655157 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] Inserted key into loop_instance_map id 139665936784344 for key ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear') and process 17919
+[TRACE   ] get_event() caching unwanted event = {'tag': '20160613211721780861', 'data': {'_stamp': '2016-06-13T21:17:21.781102', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613211721780861/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211721780861', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:21.782311', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613211721780861/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211721780861', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:21.782311', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613211721780861/ret/node1.example.com', 'data': {'fun_args': ['20160613211711655157'], 'jid': '20160613211721780861', 'return': {'tgt_type': 'glob', 'jid': '20160613211711655157', 'tgt': '*node1*', 'pid': 2647, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:17:21.821831', 'fun': 'saltutil.find_job', 'id': 'node1.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 93 times
+
+[DEBUG   ] Checking whether jid 20160613211711655157 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] Inserted key into loop_instance_map id 139665750706584 for key ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear') and process 17919
+[TRACE   ] get_event() caching unwanted event = {'tag': '20160613211731855408', 'data': {'_stamp': '2016-06-13T21:17:31.855661', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613211731855408/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211731855408', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:31.856847', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613211731855408/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211731855408', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:31.856847', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613211731855408/ret/node1.example.com', 'data': {'fun_args': ['20160613211711655157'], 'jid': '20160613211731855408', 'return': {'tgt_type': 'glob', 'jid': '20160613211711655157', 'tgt': '*node1*', 'pid': 2647, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:17:31.914070', 'fun': 'saltutil.find_job', 'id': 'node1.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 93 times
+
+[DEBUG   ] Checking whether jid 20160613211711655157 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] Inserted key into loop_instance_map id 139665750616760 for key ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear') and process 17919
+[TRACE   ] get_event() caching unwanted event = {'tag': '20160613211741968589', 'data': {'_stamp': '2016-06-13T21:17:41.968861', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613211741968589/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211741968589', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:41.971518', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613211741968589/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211741968589', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:41.971518', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613211741968589/ret/node1.example.com', 'data': {'fun_args': ['20160613211711655157'], 'jid': '20160613211741968589', 'return': {'tgt_type': 'glob', 'jid': '20160613211711655157', 'tgt': '*node1*', 'pid': 2647, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:17:42.020903', 'fun': 'saltutil.find_job', 'id': 'node1.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 94 times
+
+[DEBUG   ] Checking whether jid 20160613211711655157 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] Inserted key into loop_instance_map id 139665936736552 for key ('/salt/keys', 'node1.example.com_master', 'tcp://127.0.0.1:4506', 'clear') and process 17919
+[TRACE   ] get_event() caching unwanted event = {'tag': '20160613211752164332', 'data': {'_stamp': '2016-06-13T21:17:52.164580', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613211752164332/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211752164332', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:52.165899', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613211752164332/new', 'data': {'tgt_type': 'glob', 'jid': '20160613211752164332', 'tgt': '*node1*', '_stamp': '2016-06-13T21:17:52.165899', 'user': 'sudo_USER_NAME', 'arg': ['20160613211711655157'], 'fun': 'saltutil.find_job', 'minions': ['node1.example.com']}}
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613211752164332/ret/node1.example.com', 'data': {'fun_args': ['20160613211711655157'], 'jid': '20160613211752164332', 'return': {'tgt_type': 'glob', 'jid': '20160613211711655157', 'tgt': '*node1*', 'pid': 2647, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:17:52.225993', 'fun': 'saltutil.find_job', 'id': 'node1.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 74 times
+
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613211711655157/ret/node1.example.com', 'data': {SCRUB}
+[DEBUG   ] jid 20160613211711655157 return from node1.example.com
+[DEBUG   ] LazyLoaded highstate.output
+[DEBUG   ] LazyLoaded nested.output
+[TRACE   ] data = {'node1.example.com': {SCRUB}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[DEBUG   ] jid 20160613211711655157 found all minions set(['node1.example.com'])
+Executing job with jid 20160613211711655157
+-------------------------------------------
+
+node1.example.com:
+
+Summary for node1.example.com
+--------------
+Succeeded: 421
+Failed:      0
+--------------
+Total states run:     421
+
+real    0m56.938s
+user    0m1.077s
+sys 0m0.603s
+```
+#### 2015.8.7
+- **salt (master): 0m22.700s**
+- **salt-call (minion): 0m24.814s**
+
+```
+<bash>$ salt --version
+salt 2015.8.7 (Beryllium)
+
+<bash>$ time salt -v '*node2*' state.highstate -l trace
+
+[DEBUG   ] Reading configuration from /etc/salt/master
+[DEBUG   ] Missing configuration file: /home/USER_NAME/.saltrc
+[TRACE   ] None of the required configuration sections, 'logstash_udp_handler' and 'logstash_zmq_handler', were found the in the configuration. Not loading the Logstash logging handlers module.
+[TRACE   ] The required configuration section, 'fluent_handler', was not found the in the configuration. Not loading the fluent logging handlers module.
+[DEBUG   ] Configuration file path: /etc/salt/master
+[DEBUG   ] Reading configuration from /etc/salt/master
+[DEBUG   ] Missing configuration file: /home/USER_NAME/.saltrc
+[DEBUG   ] MasterEvent PUB socket URI: ipc:///var/run/salt/master/master_event_pub.ipc
+[DEBUG   ] MasterEvent PULL socket URI: ipc:///var/run/salt/master/master_event_pull.ipc
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node2.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] func get_cli_event_returns()
+[DEBUG   ] LazyLoaded local_cache.get_load
+[DEBUG   ] get_iter_returns for jid 20160613214405387747 sent to set(['node2.example.com']) will timeout at 21:44:15.400416
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613214405387747/new', 'data': {'tgt_type': 'glob', 'jid': '20160613214405387747', 'tgt': '*node2*', '_stamp': '2016-06-13T21:44:05.396342', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 879 times
+
+[DEBUG   ] Checking whether jid 20160613214405387747 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node2.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] get_event() caching unwanted event = {'tag': '20160613214415405845', 'data': {'_stamp': '2016-06-13T21:44:15.406033', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613214415405845/new', 'data': {'tgt_type': 'glob', 'jid': '20160613214415405845', 'tgt': '*node2*', '_stamp': '2016-06-13T21:44:15.406244', 'user': 'sudo_USER_NAME', 'arg': ['20160613214405387747'], 'fun': 'saltutil.find_job', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613214415405845/new', 'data': {'tgt_type': 'glob', 'jid': '20160613214415405845', 'tgt': '*node2*', '_stamp': '2016-06-13T21:44:15.406244', 'user': 'sudo_USER_NAME', 'arg': ['20160613214405387747'], 'fun': 'saltutil.find_job', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+TRACE Repeats 21 times
+
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613214415405845/ret/node2.example.com', 'data': {'fun_args': ['20160613214405387747'], 'jid': '20160613214415405845', 'return': {'tgt_type': 'glob', 'jid': '20160613214405387747', 'tgt': '*node2*', 'pid': 9170, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:44:15.535927', 'fun': 'saltutil.find_job', 'id': 'node2.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613214415405845/ret/node2.example.com', 'data': {'fun_args': ['20160613214405387747'], 'jid': '20160613214415405845', 'return': {'tgt_type': 'glob', 'jid': '20160613214405387747', 'tgt': '*node2*', 'pid': 9170, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:44:15.535927', 'fun': 'saltutil.find_job', 'id': 'node2.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 1879 times
+
+[DEBUG   ] Checking whether jid 20160613214405387747 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for ('/salt/keys', 'node2.example.com_master', 'tcp://127.0.0.1:4506', 'clear')
+[TRACE   ] get_event() caching unwanted event = {'tag': '20160613214425417379', 'data': {'_stamp': '2016-06-13T21:44:25.417549', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613214425417379/new', 'data': {'tgt_type': 'glob', 'jid': '20160613214425417379', 'tgt': '*node2*', '_stamp': '2016-06-13T21:44:25.417762', 'user': 'sudo_USER_NAME', 'arg': ['20160613214405387747'], 'fun': 'saltutil.find_job', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613214425417379/new', 'data': {'tgt_type': 'glob', 'jid': '20160613214425417379', 'tgt': '*node2*', '_stamp': '2016-06-13T21:44:25.417762', 'user': 'sudo_USER_NAME', 'arg': ['20160613214405387747'], 'fun': 'saltutil.find_job', 'minions': ['node2.example.com']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 20 times
+
+[TRACE   ] get_event() caching unwanted event = {'tag': 'salt/job/20160613214425417379/ret/node2.example.com', 'data': {'fun_args': ['20160613214405387747'], 'jid': '20160613214425417379', 'return': {'tgt_type': 'glob', 'jid': '20160613214405387747', 'tgt': '*node2*', 'pid': 9170, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:44:25.546093', 'fun': 'saltutil.find_job', 'id': 'node2.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] get_event() returning cached event = {'tag': 'salt/job/20160613214425417379/ret/node2.example.com', 'data': {'fun_args': ['20160613214405387747'], 'jid': '20160613214425417379', 'return': {'tgt_type': 'glob', 'jid': '20160613214405387747', 'tgt': '*node2*', 'pid': 9170, 'ret': '', 'user': 'sudo_USER_NAME', 'arg': [], 'fun': 'state.highstate'}, 'retcode': 0, 'success': True, 'cmd': '_return', '_stamp': '2016-06-13T21:44:25.546093', 'fun': 'saltutil.find_job', 'id': 'node2.example.com'}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+
+# TRACE Repeats 373 times
+
+[TRACE   ] get_event() received = {'tag': 'salt/job/20160613214405387747/ret/node2.example.com', 'data': {SCRUB}
+[DEBUG   ] jid 20160613214405387747 return from node2.example.com
+[DEBUG   ] LazyLoaded highstate.output
+[TRACE   ] data = {SCRUB}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[DEBUG   ] jid 20160613214405387747 found all minions set(['node2.example.com'])
+Executing job with jid 20160613214405387747
+-------------------------------------------
+
+node2.example.com:
+
+Summary for node2.example.com
+--------------
+Succeeded: 421
+Failed:      0
+--------------
+Total states run:     421
+
+real    0m22.700s
+user    0m1.161s
+sys     0m0.165s
+```
+### Versions Report
+#### 2016.3.0
+
+```
+<bash>$ sudo salt --versions-report
+Salt Version:
+           Salt: 2016.3.0
+
+Dependency Versions:
+           cffi: Not Installed
+       cherrypy: Not Installed
+       dateutil: 1.5
+          gitdb: Not Installed
+      gitpython: Not Installed
+          ioflo: Not Installed
+         Jinja2: 2.7.2
+        libgit2: Not Installed
+        libnacl: Not Installed
+       M2Crypto: Not Installed
+           Mako: Not Installed
+   msgpack-pure: Not Installed
+ msgpack-python: 0.3.0
+   mysql-python: Not Installed
+      pycparser: Not Installed
+       pycrypto: 2.6.1
+         pygit2: Not Installed
+         Python: 2.7.6 (default, Jun 22 2015, 17:58:13)
+   python-gnupg: Not Installed
+         PyYAML: 3.10
+          PyZMQ: 14.4.0
+           RAET: Not Installed
+          smmap: Not Installed
+        timelib: Not Installed
+        Tornado: 4.2.1
+            ZMQ: 4.0.4
+
+System Versions:
+           dist: Ubuntu 14.04 trusty
+        machine: x86_64
+        release: 3.13.0-88-generic
+         system: Linux
+        version: Ubuntu 14.04 trusty
+```
+#### 2015.8.7
+
+<bash>$ salt --versions-report
+
+```
+Salt Version:
+           Salt: 2015.8.7
+
+Dependency Versions:
+         Jinja2: 2.7.2
+       M2Crypto: Not Installed
+           Mako: Not Installed
+         PyYAML: 3.10
+          PyZMQ: 14.4.0
+         Python: 2.7.6 (default, Jun 22 2015, 17:58:13)
+           RAET: Not Installed
+        Tornado: 4.2.1
+            ZMQ: 4.0.4
+           cffi: Not Installed
+       cherrypy: Not Installed
+       dateutil: 1.5
+          gitdb: Not Installed
+      gitpython: Not Installed
+          ioflo: Not Installed
+        libgit2: Not Installed
+        libnacl: Not Installed
+   msgpack-pure: Not Installed
+ msgpack-python: 0.3.0
+   mysql-python: Not Installed
+      pycparser: Not Installed
+       pycrypto: 2.6.1
+         pygit2: Not Installed
+   python-gnupg: Not Installed
+          smmap: Not Installed
+        timelib: Not Installed
+
+System Versions:
+           dist: Ubuntu 14.04 trusty
+        machine: x86_64
+        release: 3.13.0-86-generic
+         system: Ubuntu 14.04 trusty
+```

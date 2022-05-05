@@ -1,0 +1,40 @@
+**Description**
+Master version of Salt Modules Index is missing entire categories of modules, and module indexes for categories as well as the module documentation are all broken in some form or another.
+
+Examples:
+
+Salt Module Index
+https://docs.saltproject.io/en/master/py-modindex.html
+
+Salt Beacons Index:
+https://docs.saltproject.io/en/master/ref/beacons/all/index.html
+
+Salt.Beacons.BTMP:
+https://docs.saltproject.io/en/master/ref/beacons/all/salt.beacons.btmp.html#module-salt.beacons.btmp
+
+It appears to be impacting at least these categories:
+
+- Auth
+- Beacons
+- Cache
+- Cloud
+- Engines
+- Fileserver
+- NetAPI
+- Output
+- Pillar
+- Queues
+- Roster
+- Thorium
+- Token
+- Wheel
+
+**Suggested Fix**
+Restore formatting and missing sections
+
+**Type of documentation**
+Salt documentation (Salt Module Reference)
+
+**Location or format of documentation**
+https://docs.saltproject.io/en/master/py-modindex.html
+

@@ -1,0 +1,12 @@
+In:
+https://docs.saltstack.com/en/develop/topics/installation/rhel.html#installation-rhel-repo
+
+The yum repo is defined with the variable: $releasever, which expands to:  '7Server'
+
+```
+baseurl=https://repo.saltstack.com/yum/rhel$releasever
+```
+
+But the actual repo seems to be on: '7'
+
+https://repo.saltstack.com/yum/rhel7/repodata/

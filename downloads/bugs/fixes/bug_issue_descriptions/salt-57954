@@ -1,0 +1,394 @@
+### Description of Issue
+salt (CLI) intermittently hangs and waits for random minions to return even after master and minion logs indicate good return
+
+unable to reproduce exactly what causes the salt-master to enter this mode
+but, once in this mode, the problem seems to continue repeatedly
+
+restarting salt master clears the issue until next time problem occurs: usually within a day or two
+
+we just upgraded from 2018.3.4 to 3000.3 and started to experience this behavior just after the upgrade
+this is preventing further rollout to production until resolved
+
+additionally, after salt '*' test.ping hangs for couple minions, immediately re-targeting those hung minions individually are successful: salt <hung_minion> test.ping works fine
+
+### Setup
+1 salt master at 3000.3 with approx 150 salt minions also at 3000.3
+
+### Steps to Reproduce Issue
+
+hang occurred shortly before: Wed Jul 15 19:42:11 UTC 2020
+```
+salt 'sym-cbe85-dev-chat-glb-1-ause1-*' -l trace test.ping
+```
+
+**Salt CLI Continues to Wait/Hangs**
+```
+salt 'sym-cbe85-dev-chat-glb-1-ause1-*' -l trace test.ping
+...
+...
+sym-cbe85-dev-chat-glb-1-ause1-slr3:
+    True
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] get_event() received = {u'tag': 'salt/job/20200715194151912969/ret/sym-cbe85-dev-chat-glb-1-ause1-app2', u'data': {u'fun_args': [], u'jid': u'20200715194151912969', u'return': True, u'retcode': 0, u'success': True, u'cmd':
+ u'_return', u'_stamp': u'2020-07-15T19:41:52.083355', u'fun': u'test.ping', u'id': u'sym-cbe85-dev-chat-glb-1-ause1-app2'}}
+[DEBUG   ] jid 20200715194151912969 return from sym-cbe85-dev-chat-glb-1-ause1-app2
+[DEBUG   ] return event: {u'sym-cbe85-dev-chat-glb-1-ause1-app2': {u'jid': u'20200715194151912969', u'retcode': 0, u'ret': True}}
+[DEBUG   ] LazyLoaded nested.output
+[TRACE   ] data = {u'sym-cbe85-dev-chat-glb-1-ause1-app2': True}
+sym-cbe85-dev-chat-glb-1-ause1-app2:
+    True
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+...
+...
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[DEBUG   ] Checking whether jid 20200715194151912969 is still running
+[DEBUG   ] Initializing new AsyncZeroMQReqChannel for (u'/etc/salt/pki/master', u'dev-salt1_master', u'tcp://127.0.0.1:4506', u'clear')
+[DEBUG   ] Connecting the Minion to the Master URI (for the return server): tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[DEBUG   ] Trying to connect to: tcp://127.0.0.1:4506
+[TRACE   ] Inserted key into loop_instance_map id 140147672678768 for key (u'/etc/salt/pki/master', u'dev-salt1_master', u'tcp://127.0.0.1:4506', u'clear') and process 3454
+[DEBUG   ] Closing AsyncZeroMQReqChannel instance
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] get_event() caching unwanted event = {u'tag': '20200715194332037036', u'data': {u'_stamp': u'2020-07-15T19:43:32.037345', u'minions': [u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'sym-cbe85-dev-chat-glb-1-ause1-elk5']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] get_event() caching unwanted event = {u'tag': 'salt/job/20200715194332037036/new', u'data': {u'tgt_type': u'list', u'jid': u'20200715194332037036', u'tgt': [u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'sym-cbe85-dev-chat-glb-
+1-ause1-elk5'], u'missing': [], u'_stamp': u'2020-07-15T19:43:32.037953', u'user': u'sudo_jerome', u'arg': [u'20200715194151912969'], u'fun': u'saltutil.find_job', u'minions': [u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'sym-cbe85-dev-chat-glb-1-ause1-elk5']}}
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] get_event() returning cached event = {u'tag': 'salt/job/20200715194332037036/new', u'data': {u'tgt_type': u'list', u'jid': u'20200715194332037036', u'tgt': [u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'sym-cbe85-dev-chat-glb-
+1-ause1-elk5'], u'missing': [], u'_stamp': u'2020-07-15T19:43:32.037953', u'user': u'sudo_jerome', u'arg': [u'20200715194151912969'], u'fun': u'saltutil.find_job', u'minions': [u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'sym-cbe85-dev-chat-glb-1-ause1-elk5']}}
+[DEBUG   ] Passing on saltutil error. Key 'u'retcode' missing from client return. This may be an error in the client.
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] get_event() received = {u'tag': 'salt/job/20200715194332037036/ret/sym-cbe85-dev-chat-glb-1-ause1-elk5', u'data': {u'fun_args': [u'20200715194151912969'], u'jid': u'20200715194332037036', u'return': {}, u'retcode': 0, u'su
+ccess': True, u'cmd': u'_return', u'_stamp': u'2020-07-15T19:43:32.143717', u'fun': u'saltutil.find_job', u'id': u'sym-cbe85-dev-chat-glb-1-ause1-elk5'}}
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] get_event() received = {u'tag': 'salt/job/20200715194332037036/ret/sym-cbe85-dev-chat-glb-1-ause1-app1', u'data': {u'fun_args': [u'20200715194151912969'], u'jid': u'20200715194332037036', u'return': {}, u'retcode': 0, u'su
+ccess': True, u'cmd': u'_return', u'_stamp': u'2020-07-15T19:43:32.147159', u'fun': u'saltutil.find_job', u'id': u'sym-cbe85-dev-chat-glb-1-ause1-app1'}}
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+...
+...
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194151912969
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[TRACE   ] Get event. tag: salt/job/20200715194332037036
+[TRACE   ] _get_event() waited 0 seconds and received nothing
+[DEBUG   ] return event: {'sym-cbe85-dev-chat-glb-1-ause1-app1': {u'failed': True}}
+[DEBUG   ] LazyLoaded localfs.init_kwargs
+[DEBUG   ] LazyLoaded localfs.init_kwargs
+[DEBUG   ] LazyLoaded no_return.output
+[TRACE   ] data = {'sym-cbe85-dev-chat-glb-1-ause1-app1': u'Minion did not return. [No response]'}
+sym-cbe85-dev-chat-glb-1-ause1-app1:
+    Minion did not return. [No response]
+[DEBUG   ] return event: {'sym-cbe85-dev-chat-glb-1-ause1-elk5': {u'failed': True}}
+[DEBUG   ] LazyLoaded localfs.init_kwargs
+[DEBUG   ] LazyLoaded no_return.output
+[TRACE   ] data = {'sym-cbe85-dev-chat-glb-1-ause1-elk5': u'Minion did not return. [No response]'}
+sym-cbe85-dev-chat-glb-1-ause1-elk5:
+    Minion did not return. [No response]
+[DEBUG   ] Closing IPCMessageSubscriber instance
+ERROR: Minions returned with non-zero exit code
+[root@dev-salt1 salt_minion]#
+```
+
+**Jobs Lookup Confirms Return Was Good**
+```
+$ salt-run jobs.lookup_jid 20200715194151912969 | grep -A3 -B3  sym-cbe85-dev-chat-glb-1-ause1-app1
+[INFO    ] Runner completed: 20200715195152612877
+sym-cbe85-dev-chat-glb-1-ause1-app1:
+    True
+sym-cbe85-dev-chat-glb-1-ause1-app2:
+    True
+[dev] root@dev-salt1 /home/jerome   2020-07-15 19:51:54 UTC
+$
+```
+
+**Master Log Seems to Indicates "Got return"**
+```
+2020-07-15 19:41:52,057 [salt.utils.job   :68  ][INFO    ][12514] Got return from sym-cbe85-dev-chat-glb-1-ause1-app1 for job 20200715194151912969
+2020-07-15 19:41:52,058 [salt.utils.event :736 ][DEBUG   ][12514] Sending event: tag = salt/job/20200715194151912969/ret/sym-cbe85-dev-chat-glb-1-ause1-app1; data = {'fun_args': [], 'jid': '20200715194151912969', 'return': True, 'retcode': 0, 'success': True, 'cmd': '_return', u'_stamp': '2020-07-15T19:41:52.058398', 'fun': 'test.ping', 'id': 'sym-cbe85-dev-chat-glb-1-ause1-app1'}
+2020-07-15 19:42:09,062 [salt.utils.event :736 ][DEBUG   ][12595] Sending event: tag = minion_ping; data = {u'_stamp': '2020-07-15T19:42:09.062269', 'pretag': None, 'cmd': '_minion_event', 'tag': 'minion_ping', 'data': 'ping', 'id': 'sym-cbe85-dev-chat-glb-1-ause1-app1'}
+2020-07-15 19:43:32,037 [salt.utils.event :736 ][DEBUG   ][12671] Sending event: tag = 20200715194332037036; data = {u'_stamp': '2020-07-15T19:43:32.037345', u'minions': ['sym-cbe85-dev-chat-glb-1-ause1-app1', 'sym-cbe85-dev-chat-glb-1-ause1-elk5']}
+2020-07-15 19:43:32,038 [salt.utils.event :736 ][DEBUG   ][12671] Sending event: tag = salt/job/20200715194332037036/new; data = {u'tgt_type': 'list', u'jid': u'20200715194332037036', u'user': 'sudo_jerome', u'tgt': ['sym-cbe85-dev-chat-glb-1-ause1-app1', 'sym-cbe85-dev-chat-glb-1-ause1-elk5'], u'arg': ['20200715194151912969'], u'fun': 'saltutil.find_job', u'missing': [], u'_stamp': '2020-07-15T19:43:32.037953', u'minions': ['sym-cbe85-dev-chat-glb-1-ause1-app1', 'sym-cbe85-dev-chat-glb-1-ause1-elk5']}
+2020-07-15 19:43:32,038 [salt.loaded.int.returner.local_cache:252 ][DEBUG   ][12671] Adding minions for job 20200715194332037036: ['sym-cbe85-dev-chat-glb-1-ause1-app1', 'sym-cbe85-dev-chat-glb-1-ause1-elk5']
+2020-07-15 19:43:32,039 [salt.master      :2394][DEBUG   ][12671] Published command details {u'tgt_type': 'list', u'jid': u'20200715194332037036', u'tgt': ['sym-cbe85-dev-chat-glb-1-ause1-app1', 'sym-cbe85-dev-chat-glb-1-ause1-elk5'], u'ret': '', u'user': 'sudo_jerome', u'arg': ['20200715194151912969'], u'fun': 'saltutil.find_job'}
+2020-07-15 19:43:32,146 [salt.utils.job   :68  ][INFO    ][12670] Got return from sym-cbe85-dev-chat-glb-1-ause1-app1 for job 20200715194332037036
+2020-07-15 19:43:32,147 [salt.utils.event :736 ][DEBUG   ][12670] Sending event: tag = salt/job/20200715194332037036/ret/sym-cbe85-dev-chat-glb-1-ause1-app1; data = {'fun_args': ['20200715194151912969'], 'jid': '20200715194332037036', 'return': {}, 'retcode': 0, 'success': True, 'cmd': '_return', u'_stamp': '2020-07-15T19:43:32.147159', 'fun': 'saltutil.find_job', 'id': 'sym-cbe85-dev-chat-glb-1-ause1-app1'}
+2020-07-15 19:44:18,031 [salt.client      :1527][DEBUG   ][3454] return event: {'sym-cbe85-dev-chat-glb-1-ause1-app1': {u'failed': True}}
+```
+
+**Salt Minion Log Seems to Indicate Good Return**
+```
+2020-07-15 19:41:51,933 [salt.minion      :1491][INFO    ][29017] User sudo_jerome Executing command test.ping with jid 20200715194151912969
+2020-07-15 19:41:51,933 [salt.minion      :1498][DEBUG   ][29017] Command details {u'tgt_type': u'glob', u'jid': u'20200715194151912969', u'tgt': u'sym-cbe85-dev-chat-glb-1-ause1-*', u'ret': u'', u'user': u'sudo_jerome', u'arg': [], u'fun': u'test.ping'}
+2020-07-15 19:41:51,937 [salt.utils.process:911 ][DEBUG   ][29017] Subprocess ProcessPayload-Job-20200715194151912969 added
+2020-07-15 19:41:52,003 [salt.utils.lazy  :104 ][DEBUG   ][32188] LazyLoaded jinja.render
+2020-07-15 19:41:52,005 [salt.utils.lazy  :104 ][DEBUG   ][32188] LazyLoaded yaml.render
+2020-07-15 19:41:52,007 [salt.minion      :1621][INFO    ][32188] Starting a new job 20200715194151912969 with PID 32188
+2020-07-15 19:41:52,009 [salt.utils.lazy  :107 ][DEBUG   ][32188] Could not LazyLoad direct_call.allow_missing_func: 'direct_call.allow_missing_func' is not available.
+2020-07-15 19:41:52,028 [salt.utils.lazy  :104 ][DEBUG   ][32188] LazyLoaded test.ping
+2020-07-15 19:41:52,029 [salt.loaded.int.module.test:123 ][DEBUG   ][32188] test.ping received for minion 'sym-cbe85-dev-chat-glb-1-ause1-app1'
+2020-07-15 19:41:52,029 [salt.minion      :815 ][DEBUG   ][32188] Minion return retry timer set to 5 seconds (randomized)
+2020-07-15 19:41:52,029 [salt.minion      :1949][INFO    ][32188] Returning information for job: 20200715194151912969
+2020-07-15 19:41:52,030 [salt.transport.zeromq:139 ][DEBUG   ][32188] Initializing new AsyncZeroMQReqChannel for (u'/etc/salt/pki/minion', u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'tcp://10.0.94.222:4506', u'aes')
+2020-07-15 19:41:52,031 [salt.crypt       :464 ][DEBUG   ][32188] Initializing new AsyncAuth for (u'/etc/salt/pki/minion', u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'tcp://10.0.94.222:4506')
+2020-07-15 19:41:52,032 [salt.transport.zeromq:210 ][DEBUG   ][32188] Connecting the Minion to the Master URI (for the return server): tcp://10.0.94.222:4506
+2020-07-15 19:41:52,032 [salt.transport.zeromq:1204][DEBUG   ][32188] Trying to connect to: tcp://10.0.94.222:4506
+2020-07-15 19:41:52,064 [salt.transport.zeromq:234 ][DEBUG   ][32188] Closing AsyncZeroMQReqChannel instance
+2020-07-15 19:41:52,065 [salt.minion      :1799][DEBUG   ][32188] minion return: {u'fun_args': [], u'jid': u'20200715194151912969', u'return': True, u'retcode': 0, u'success': True, u'fun': u'test.ping'}
+2020-07-15 19:41:53,057 [salt.utils.process:920 ][DEBUG   ][29017] Subprocess ProcessPayload-Job-20200715194151912969 cleaned up
+2020-07-15 19:42:09,056 [salt.transport.zeromq:139 ][DEBUG   ][29017] Initializing new AsyncZeroMQReqChannel for (u'/etc/salt/pki/minion', u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'tcp://10.0.94.222:4506', u'aes')
+2020-07-15 19:42:09,056 [salt.crypt       :472 ][DEBUG   ][29017] Re-using AsyncAuth for (u'/etc/salt/pki/minion', u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'tcp://10.0.94.222:4506')
+2020-07-15 19:42:09,057 [salt.transport.zeromq:210 ][DEBUG   ][29017] Connecting the Minion to the Master URI (for the return server): tcp://10.0.94.222:4506
+2020-07-15 19:42:09,057 [salt.transport.zeromq:1204][DEBUG   ][29017] Trying to connect to: tcp://10.0.94.222:4506
+2020-07-15 19:42:09,064 [salt.transport.zeromq:234 ][DEBUG   ][29017] Closing AsyncZeroMQReqChannel instance
+2020-07-15 19:42:10,056 [salt.utils.schedule:1585][DEBUG   ][29017] schedule: Job __master_alive_10.0.94.222 was scheduled with jid_include, adding to cache (jid_include defaults to True)
+2020-07-15 19:42:10,056 [salt.utils.schedule:1588][DEBUG   ][29017] schedule: Job __master_alive_10.0.94.222 was scheduled with a max number of 1
+2020-07-15 19:42:10,056 [salt.utils.schedule:1605][INFO    ][29017] Running scheduled job: __master_alive_10.0.94.222
+2020-07-15 19:42:10,060 [salt.utils.process:911 ][DEBUG   ][29017] Subprocess SignalHandlingProcess-1:34-Schedule-__master_alive_10.0.94.222 added
+2020-07-15 19:42:10,093 [salt.utils.schedule:697 ][DEBUG   ][32249] schedule.handle_func: adding this job to the jobcache with data {u'fun_args': [], u'jid': u'20200715194210093151', u'schedule': u'__master_alive_10.0.94.222', u'pid': 32249, u'fun': u'status.master', u'id': u'sym-cbe85-dev-chat-glb-1-ause1-app1'}
+2020-07-15 19:42:10,096 [salt.utils.lazy  :104 ][DEBUG   ][32249] LazyLoaded status.master
+2020-07-15 19:42:10,097 [salt.utils.lazy  :104 ][DEBUG   ][32249] LazyLoaded config.get
+2020-07-15 19:42:10,105 [salt.utils.schedule:848 ][DEBUG   ][32249] schedule.handle_func: Removing /var/cache/salt/minion/proc/20200715194210093151
+2020-07-15 19:42:11,056 [salt.utils.process:920 ][DEBUG   ][29017] Subprocess SignalHandlingProcess-1:34-Schedule-__master_alive_10.0.94.222 cleaned up
+2020-07-15 19:42:40,056 [salt.utils.schedule:1585][DEBUG   ][29017] schedule: Job __master_alive_10.0.94.222 was scheduled with jid_include, adding to cache (jid_include defaults to True)
+2020-07-15 19:42:40,056 [salt.utils.schedule:1588][DEBUG   ][29017] schedule: Job __master_alive_10.0.94.222 was scheduled with a max number of 1
+2020-07-15 19:42:40,057 [salt.utils.schedule:1605][INFO    ][29017] Running scheduled job: __master_alive_10.0.94.222
+2020-07-15 19:42:40,060 [salt.utils.process:911 ][DEBUG   ][29017] Subprocess SignalHandlingProcess-1:35-Schedule-__master_alive_10.0.94.222 added
+2020-07-15 19:42:40,093 [salt.utils.schedule:697 ][DEBUG   ][32463] schedule.handle_func: adding this job to the jobcache with data {u'fun_args': [], u'jid': u'20200715194240092746', u'schedule': u'__master_alive_10.0.94.222', u'pid': 32463, u'fun': u'status.master', u'id': u'sym-cbe85-dev-chat-glb-1-ause1-app1'}
+2020-07-15 19:42:40,096 [salt.utils.lazy  :104 ][DEBUG   ][32463] LazyLoaded status.master
+2020-07-15 19:42:40,097 [salt.utils.lazy  :104 ][DEBUG   ][32463] LazyLoaded config.get
+2020-07-15 19:42:40,104 [salt.utils.schedule:848 ][DEBUG   ][32463] schedule.handle_func: Removing /var/cache/salt/minion/proc/20200715194240092746
+2020-07-15 19:42:41,056 [salt.utils.process:920 ][DEBUG   ][29017] Subprocess SignalHandlingProcess-1:35-Schedule-__master_alive_10.0.94.222 cleaned up
+2020-07-15 19:43:10,057 [salt.utils.schedule:1585][DEBUG   ][29017] schedule: Job __master_alive_10.0.94.222 was scheduled with jid_include, adding to cache (jid_include defaults to True)
+2020-07-15 19:43:10,057 [salt.utils.schedule:1588][DEBUG   ][29017] schedule: Job __master_alive_10.0.94.222 was scheduled with a max number of 1
+2020-07-15 19:43:10,057 [salt.utils.schedule:1605][INFO    ][29017] Running scheduled job: __master_alive_10.0.94.222
+2020-07-15 19:43:10,061 [salt.utils.process:911 ][DEBUG   ][29017] Subprocess SignalHandlingProcess-1:36-Schedule-__master_alive_10.0.94.222 added
+2020-07-15 19:43:10,093 [salt.utils.schedule:697 ][DEBUG   ][32522] schedule.handle_func: adding this job to the jobcache with data {u'fun_args': [], u'jid': u'20200715194310093543', u'schedule': u'__master_alive_10.0.94.222', u'pid': 32522, u'fun': u'status.master', u'id': u'sym-cbe85-dev-chat-glb-1-ause1-app1'}
+2020-07-15 19:43:10,096 [salt.utils.lazy  :104 ][DEBUG   ][32522] LazyLoaded status.master
+2020-07-15 19:43:10,098 [salt.utils.lazy  :104 ][DEBUG   ][32522] LazyLoaded config.get
+2020-07-15 19:43:10,105 [salt.utils.schedule:848 ][DEBUG   ][32522] schedule.handle_func: Removing /var/cache/salt/minion/proc/20200715194310093543
+2020-07-15 19:43:11,057 [salt.utils.process:920 ][DEBUG   ][29017] Subprocess SignalHandlingProcess-1:36-Schedule-__master_alive_10.0.94.222 cleaned up
+2020-07-15 19:43:32,057 [salt.minion      :1491][INFO    ][29017] User sudo_jerome Executing command saltutil.find_job with jid 20200715194332037036
+2020-07-15 19:43:32,057 [salt.minion      :1498][DEBUG   ][29017] Command details {u'tgt_type': u'list', u'jid': u'20200715194332037036', u'tgt': [u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'sym-cbe85-dev-chat-glb-1-ause1-elk5'], u'ret': u'', u'user': u'sudo_jerome', u'arg': [u'20200715194151912969'], u'fun': u'saltutil.find_job'}
+2020-07-15 19:43:32,061 [salt.utils.process:911 ][DEBUG   ][29017] Subprocess ProcessPayload-Job-20200715194332037036 added
+2020-07-15 19:43:32,126 [salt.utils.lazy  :104 ][DEBUG   ][32701] LazyLoaded jinja.render
+2020-07-15 19:43:32,128 [salt.utils.lazy  :104 ][DEBUG   ][32701] LazyLoaded yaml.render
+2020-07-15 19:43:32,130 [salt.minion      :1621][INFO    ][32701] Starting a new job 20200715194332037036 with PID 32701
+2020-07-15 19:43:32,133 [salt.utils.lazy  :107 ][DEBUG   ][32701] Could not LazyLoad direct_call.allow_missing_func: 'direct_call.allow_missing_func' is not available.
+2020-07-15 19:43:32,136 [salt.utils.lazy  :104 ][DEBUG   ][32701] LazyLoaded saltutil.find_job
+2020-07-15 19:43:32,137 [salt.minion      :815 ][DEBUG   ][32701] Minion return retry timer set to 7 seconds (randomized)
+2020-07-15 19:43:32,138 [salt.minion      :1949][INFO    ][32701] Returning information for job: 20200715194332037036
+2020-07-15 19:43:32,139 [salt.transport.zeromq:139 ][DEBUG   ][32701] Initializing new AsyncZeroMQReqChannel for (u'/etc/salt/pki/minion', u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'tcp://10.0.94.222:4506', u'aes')
+2020-07-15 19:43:32,139 [salt.crypt       :464 ][DEBUG   ][32701] Initializing new AsyncAuth for (u'/etc/salt/pki/minion', u'sym-cbe85-dev-chat-glb-1-ause1-app1', u'tcp://10.0.94.222:4506')
+2020-07-15 19:43:32,140 [salt.transport.zeromq:210 ][DEBUG   ][32701] Connecting the Minion to the Master URI (for the return server): tcp://10.0.94.222:4506
+2020-07-15 19:43:32,140 [salt.transport.zeromq:1204][DEBUG   ][32701] Trying to connect to: tcp://10.0.94.222:4506
+2020-07-15 19:43:32,149 [salt.transport.zeromq:234 ][DEBUG   ][32701] Closing AsyncZeroMQReqChannel instance
+2020-07-15 19:43:32,150 [salt.minion      :1799][DEBUG   ][32701] minion return: {u'fun_args': [u'20200715194151912969'], u'jid': u'20200715194332037036', u'return': {}, u'retcode': 0, u'success': True, u'fun': u'saltutil.find_job'}
+2020-07-15 19:43:33,056 [salt.utils.process:920 ][DEBUG   ][29017] Subprocess ProcessPayload-Job-20200715194332037036 cleaned up
+```
+
+### Master Versions Report
+```
+$ salt --versions-report
+Salt Version:
+           Salt: 3000.3
+
+Dependency Versions:
+           cffi: 1.11.5
+       cherrypy: unknown
+       dateutil: 2.8.1
+      docker-py: 3.3.0
+          gitdb: Not Installed
+      gitpython: Not Installed
+         Jinja2: 2.7.2
+        libgit2: Not Installed
+       M2Crypto: Not Installed
+           Mako: Not Installed
+   msgpack-pure: Not Installed
+ msgpack-python: 0.6.2
+   mysql-python: 1.2.3
+      pycparser: 2.18
+       pycrypto: 2.6.1
+   pycryptodome: Not Installed
+         pygit2: Not Installed
+         Python: 2.7.5 (default, Apr  2 2020, 13:16:51)
+   python-gnupg: Not Installed
+         PyYAML: 3.11
+          PyZMQ: 15.3.0
+          smmap: Not Installed
+        timelib: Not Installed
+        Tornado: 4.5.3
+            ZMQ: 4.1.4
+
+System Versions:
+           dist: centos 7.0.1406 Core
+         locale: UTF-8
+        machine: x86_64
+        release: 3.10.0-862.11.6.el7.x86_64
+         system: Linux
+        version: CentOS Linux 7.0.1406 Core
+
+[dev] root@dev-salt1 /home/jerome   2020-07-15 19:52:42 UTC
+$
+```
+
+### Minion Versions Report
+```
+[root@sym-cbe85-dev-chat-glb-1-ause1-app1 salt]# salt-call --versions-report
+Salt Version:
+           Salt: 3000.3
+
+Dependency Versions:
+           cffi: 1.14.0
+       cherrypy: Not Installed
+       dateutil: 2.8.1
+      docker-py: Not Installed
+          gitdb: Not Installed
+      gitpython: Not Installed
+         Jinja2: 2.7.2
+        libgit2: Not Installed
+       M2Crypto: Not Installed
+           Mako: Not Installed
+   msgpack-pure: Not Installed
+ msgpack-python: 0.6.2
+   mysql-python: Not Installed
+      pycparser: 2.20
+       pycrypto: 2.6.1
+   pycryptodome: 3.9.8
+         pygit2: Not Installed
+         Python: 2.7.5 (default, Aug  7 2019, 00:51:29)
+   python-gnupg: Not Installed
+         PyYAML: 3.11
+          PyZMQ: 15.3.0
+          smmap: Not Installed
+        timelib: Not Installed
+        Tornado: 4.5.3
+            ZMQ: 4.1.4
+
+System Versions:
+           dist: centos 7.5.1804 Core
+         locale: UTF-8
+        machine: x86_64
+        release: 3.10.0-862.3.2.el7.x86_64
+         system: Linux
+        version: CentOS Linux 7.5.1804 Core
+
+[root@sym-cbe85-dev-chat-glb-1-ause1-app1 salt]#
+```
+
+### Master Configuration
+```
+default_include: master.d/*.conf
+
+#
+# Performance Tuning
+#
+worker_threads: 100
+timeout: 100
+loop_interval: 120
+roots_update_interval: 120
+max_event_size: 2097152
+sock_pool_size: 15
+
+# ZeroMQ
+#pub_hwm: 2000
+#zmq_backlog: 2000
+
+#
+# Fileserver Tuning
+#
+fileserver_followsymlinks: False
+fileserver_ignoresymlinks: True
+# deprecated: fileserver_limit_traversal: True
+fileserver_list_cache_time: 60
+#file_buffer_size: 1048576
+file_buffer_size: 2097152
+file_ignore_regex:
+  - '/\.git($|/)'
+  - '/\.svn($|/)'
+  - '/\.project($|/)'
+file_ignore_glob:
+  - '\*.pyc'
+  - '\*.swp'
+
+#
+# Fileserver Roots
+#
+file_roots:
+  base:
+    - /srv/salt/base
+  dev:
+    - /srv/salt/context/dev
+    - /srv/salt/dev
+    - /srv/salt/qa
+    - /srv/salt/stage
+    - /srv/salt/context/uat
+    - /srv/salt/uat
+    - /srv/salt/context/prod
+    - /srv/salt/prod
+    - /srv/salt/base
+    - /data/salt
+
+pillar_roots:
+  base:
+    - /srv/pillar/base
+  dev:
+    - /srv/pillar/dev
+    - /srv/pillar/qa
+    - /srv/pillar/stage
+    - /srv/pillar/uat
+    - /srv/pillar/prod
+    - /srv/pillar/base
+
+#
+# Misc Options
+#
+pillar_opts: True
+
+#
+# Debugging
+#
+# memcache_debug: True
+#master_stats: true
+# LMA: Please put back to info after you have conducted your tests:
+#log_level: info
+#log_level_logfile: all
+log_level: info
+log_level_logfile: debug
+```
+
+### Minion Configuration
+pretty much default /etc/salt/minion from RPM

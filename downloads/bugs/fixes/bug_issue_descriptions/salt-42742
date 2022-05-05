@@ -1,0 +1,29 @@
+### Description of Issue/Question
+
+When providing a pki_dir in the minion configuration that does not contain a directory call 'salt' in the path, then the minion gets stuck in an infinite loop at startup.
+
+Providing a pki_dir is important when seeding a minion through a different disk.
+
+Problem is from `utils/verify.py` in function `win_verify_env`. The first loop. It is not hard to miss.
+
+### Setup
+
+Have a windows minion with the following configuration.
+
+```
+master: your_master
+minion: some_name
+pki_dir: c:/mypki/minion
+```
+
+And create directory "c:/mypki/minion". Add a key pair and master public key.
+
+### Steps to Reproduce Issue
+
+Start the minion, it does not go very far.
+
+### Versions Report
+
+Fails with 2016.11.2, 2016.11.6 and 2017.7.0
+
+Works with 2016.3.1

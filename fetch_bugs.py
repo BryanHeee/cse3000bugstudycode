@@ -9,7 +9,7 @@ from datetime import datetime
 import re
 
 
-salt_labels = ["AIX"]
+salt_labels = ["severity-critical", "severity-high"] #
 exclude_labels = []
 
 def remove_emojis(data):
@@ -37,9 +37,6 @@ def remove_emojis(data):
     return re.sub(emoj, '', data)
 
 def filter_responses(x):
-    '''
-    Todo figure out what this function is supposed to do
-    '''
     return (any(label['name'] in salt_labels for label in x['labels'])) and 'pull_request' not in x
     #and (any(label['name'] in ("won't fix", "backend ")
                     # for label in x['labels']))
@@ -55,14 +52,13 @@ def get_data(descriptions, token): #descriptions = the directory where to put th
     page = 1
     max_per_request = 100
     temp_data = []
-    first = True
-    emptypage = []
     while True:
         first = False
         base = "https://api.github.com/repos/saltstack/salt/issues"
-        url = "{base}?state=closed&labels={labels}&per_page={pp}&page={p}".format(
+        url = "{base}?milestone={milestone}&state=closed&labels={labelsAnd}&per_page={pp}&page={p}".format(
+            milestone=13, #13 is the number of the milestone "Approved" in the salt repository 
             base=base,
-            labels= ",".join(salt_labels),
+            labelsAnd="Bug",#",".join(salt_labels),
             pp=max_per_request,
             p=page
         )
