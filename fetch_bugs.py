@@ -9,8 +9,8 @@ from datetime import datetime
 import re
 
 
-salt_labels = ["severity-critical", "severity-high"] #
-exclude_labels = []
+# salt_labels = ["severity-critical", "severity-high"] #
+exclude_labels = ["Documentation", "won't-fix", "Duplicate"]
 
 def remove_emojis(data):
     emoj = re.compile("["
@@ -37,9 +37,7 @@ def remove_emojis(data):
     return re.sub(emoj, '', data)
 
 def filter_responses(x):
-    return (any(label['name'] in salt_labels for label in x['labels'])) and 'pull_request' not in x
-    #and (any(label['name'] in ("won't fix", "backend ")
-                    # for label in x['labels']))
+    return ('pull_request' not in x) and not any(label['name'] in exclude_labels for label in x['labels'])  
 
 # Rate limit is 5000 requests per hour
 def get_data(descriptions, token): #descriptions = the directory where to put things in
@@ -55,8 +53,8 @@ def get_data(descriptions, token): #descriptions = the directory where to put th
     while True:
         first = False
         base = "https://api.github.com/repos/saltstack/salt/issues"
-        url = "{base}?milestone={milestone}&state=closed&labels={labelsAnd}&per_page={pp}&page={p}".format(
-            milestone=13, #13 is the number of the milestone "Approved" in the salt repository 
+        url = "{base}?state=closed&labels={labelsAnd}&per_page={pp}&page={p}".format(
+            # milestone=13, #13 is the number of the milestone "Approved" in the salt repository milestone={milestone}&
             base=base,
             labelsAnd="Bug",#",".join(salt_labels),
             pp=max_per_request,
