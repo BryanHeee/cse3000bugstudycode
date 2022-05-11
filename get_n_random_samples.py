@@ -22,7 +22,7 @@ def sample_numbers():
     args = get_args()
     sampled_numbers = []
     for i in range(int(args.n)):
-        chosen_number = choice(list(set([x for x in range(1, 5987)]) - to_exclude)) #inclusive, exclusive
+        chosen_number = choice(list(set([x for x in range(1, 5897)]) - to_exclude)) #inclusive, exclusive
         to_exclude.add(chosen_number)
         sampled_numbers.append(str(chosen_number))
 
