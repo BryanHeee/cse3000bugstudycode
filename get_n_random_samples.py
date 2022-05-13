@@ -9,8 +9,6 @@ def get_args():
     parser.add_argument("n", help="n is the number of random number to sample")
     return parser.parse_args()
 
-# score
-# chosen = []
 
 def sample_numbers():
 
@@ -35,6 +33,3 @@ def sample_numbers():
     print(" ".join(list(sampled_numbers)))
 
 sample_numbers()
-# score.append(6)
-# print(type(score))
-# print(score)
