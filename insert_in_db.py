@@ -4,16 +4,13 @@ import requests
 
 issue_keys = ['id', 'title', 'html_url', 'created_at', 'number',
  'closed_at', 'comments', 'comments_url', 'labels', 'state', 'updated_at'
-  ] #TODO delete this line contents: 'CMS'
-                  #move to before cms        
-                  # labels -> list -> special handling    
+  ]   
 pr_keys = ['id', 'title', 'html_url', 'created_at', 'number', 'closed_at', 'updated_at', 'merged_at', 'merge_commit_sha', 
-'comments', 'comments_url', 'labels', 'state', 'commits', 'additions', 'deletions', 'changed_files', 
-  # api returns a list of dictionaries for this field #TODO delete this line contents 'commits_data',
-] #TODO delete this line contents 'attempts_to_fix_issue_number', 'CMS'
+'comments', 'comments_url', 'labels', 'state', 'commits', 'additions', 'deletions', 'changed_files' 
+] 
 
 # commit_keys = ['html_url', 'sha'
-# ] #TODO delete this line contents 'commit_id_used_to_get_JSON', 'attempts_to_fix_issue_number', 'CMS'
+# ]
 
 
 def get_mysql_insert_query(bug_data_type):
@@ -81,8 +78,6 @@ def get_json(search_id, bug_data_type, github_token):
                 ret.append(issuejson.get(keys, None))    
         return ret
     else:
-        # url = f"https://api.github.com/repos/saltstack/salt/commits/{search_id}"
-        # return requests.get(url, headers=headers).json()
         return [f"https://api.github.com/repos/saltstack/salt/commits/{search_id}", search_id]
 
 
@@ -98,11 +93,8 @@ def get_args():
 
 def main():
     args = get_args()
-    # bug_file_path = args.bugsfile
     ghtoken = args.token.rstrip()
-    '''
-    Code for connecting to the database
-    '''
+
     connection = mysql.connector.connect(host=args.host, database=args.database,\
         user=args.username,password=args.password)
     cursor = connection.cursor()
@@ -112,8 +104,6 @@ def main():
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
 
-    #printing contents of lines
-
     with open("error.log", 'w') as logerr:
         for line in lines:
             data = line.split(",")
@@ -121,8 +111,6 @@ def main():
             fixes = data[1].split(" ")
             issue_number = issue.split("/")[-1]
 
-            #inserting issue
-            #TODO Add missing values at the end of the "tuples"
             try:
                 issue_query = get_mysql_insert_query("issue")
                 issue_list = get_json(issue_number, "issue", ghtoken)
@@ -133,7 +121,6 @@ def main():
                 errmsg = []
                 errmsg.append("problem at issue insertion")
                 errmsg.append("problem at issue number {}".format(issue_number))
-                # print("Failed to insert record into MySQL table {}\n".format(error))
                 errmsg.append("Failed to insert record into MySQL table {}".format(error))
                 logerr.write("/n".join(errmsg))
             except Exception as e:
@@ -174,7 +161,6 @@ def main():
                         errmsg.append("pr_list size is : {}".format(len(pr_list)))
                         errmsg.append("pr_list contents: {}".format(pr_list))
                         errmsg.append("Failed to insert record into MySQL table {}".format(error))
-                        # errmsg.append("Failed to insert record into MySQL table {} \n".format(error))
                         print("Failed to insert record into MySQL table {}\n".format(error))
                         logerr.write("\n".join(errmsg))
                     except Exception as e:
@@ -187,11 +173,3 @@ def main():
         print("Done!")
 
 main()
-
-# TODO:
-# Note: I have to use multiple insert queries for a given bug:
-# What if from a set of insert queries, some of them fail?
-# -> catch error and report information to log, so that I can at it later?
-# 	-> report what was not inserted, 
-# most important issue id attempted to fix, 
-# and pr number or commit id
