@@ -40,7 +40,7 @@ pip install requests mysql-connector-python
 
 To fetch the bugs from the [Salt repository](https://github.com/saltstack/salt), run `fetch.sh`.  
 ```bash
-./fetch.sh downloads $GHTOKEN
+./fetch.sh <name of the directory where you want bug data to be installed> $GHTOKEN
 ```
 `$GHTOKEN` is a Github access token necessary for running `fetch.sh`. You can get instructions on how to generate your own Github access token [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Afterwards, you can set it as an environment variable by executing the following in a terminal at the root directory:  
 ```bash
