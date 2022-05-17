@@ -7,12 +7,15 @@ if [ "$#" -ne 2 ]; then
     exit
 fi
 
+#TODO CHECK FILE PATH PARAMETERs here
 echo "Fetching Salt Bugs..."
-# python3 fetch_bugs.py $DOWNLOADS/bugs/salt.txt \
-        # $DOWNLOADS/bugs/fixes/bug_issue_descriptions $DOWNLOADS/bugs/salt.json $GH_TOKEN
+python3 fetch_bugs.py $DOWNLOADS/bugs/salt.txt \
+        $DOWNLOADS/bugs/fixes/bug_issue_descriptions $DOWNLOADS/bugs/salt.json $GH_TOKEN
 
-# echo "Cloning Compilers' Repositories..."
-# ./scripts/fetch/clone.sh $DOWNLOADS/repos
+echo "Cloning salt repository..."
+./clone.sh $DOWNLOADS/repos
+
+
 # PHASE 2
 echo "Finding Test Cases & Fixes (Post-Filtering)..."
 echo "This requires some time. Please bear with us ..."

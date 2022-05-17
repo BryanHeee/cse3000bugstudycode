@@ -282,7 +282,7 @@ function process_file ()
     #Returns true if the string is empty, false if it contains something.
   done
   mkdir -p $RESULTS/
-  echo -e "$res" > $RESULTS/salt.txt
+  echo -e "$res" > saltfixes.txt
   return
 }
 
@@ -291,7 +291,7 @@ main ()
 #   for f in $(ls -d $BUGS/*.txt); do
     # lang=${f##*/}
     # lang=${lang%.txt}
-process_file $BUGS/salt.txt  # $lang #filename? + the language?
+process_file $BUGS/1issue.txt  #salt.txt  # $lang #filename? + the language?
 #   done
 }
 

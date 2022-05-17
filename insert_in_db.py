@@ -2,12 +2,12 @@ import mysql.connector
 import argparse
 import requests
 
-issue_keys = ['id', 'title', 'html_url', 'created_at', 'number', 'body',
+issue_keys = ['id', 'title', 'html_url', 'created_at', 'number',
  'closed_at', 'comments', 'comments_url', 'labels', 'state', 'updated_at'
   ] #TODO delete this line contents: 'CMS'
                   #move to before cms        
                   # labels -> list -> special handling    
-pr_keys = ['id', 'title', 'html_url', 'created_at', 'number', 'body', 'closed_at', 'updated_at', 'merged_at', 'merge_commit_sha', 
+pr_keys = ['id', 'title', 'html_url', 'created_at', 'number', 'closed_at', 'updated_at', 'merged_at', 'merge_commit_sha', 
 'comments', 'comments_url', 'labels', 'state', 'commits', 'additions', 'deletions', 'changed_files', 
   # api returns a list of dictionaries for this field #TODO delete this line contents 'commits_data',
 ] #TODO delete this line contents 'attempts_to_fix_issue_number', 'CMS'
@@ -19,12 +19,12 @@ pr_keys = ['id', 'title', 'html_url', 'created_at', 'number', 'body', 'closed_at
 def get_mysql_insert_query(bug_data_type):
     if bug_data_type == "pr":
         return """INSERT salt_pr (
-                            pull_request_id, title, url, created_at, number, body, closed_at, updated_at, merged_at, merge_commit_sha, comments, comments_url, labels, state, commits, additions, deletions, changed_files, commits_data, attempts_to_fix_issue_number, CMS
-                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """
+                            pull_request_id, title, url, created_at, number, closed_at, updated_at, merged_at, merge_commit_sha, comments, comments_url, labels, state, commits, additions, deletions, changed_files, commits_data, attempts_to_fix_issue_number, CMS
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """
     elif bug_data_type == "issue":
         return """INSERT salt_issue (
-                            issue_id, title, url, created_at, number, body, closed_at, comments, comments_url, labels, state, updated_at, CMS
-                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """
+                            issue_id, title, url, created_at, number, closed_at, comments, comments_url, labels, state, updated_at, CMS
+                            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """
     else: # bugdatatype is commit:
         return """INSERT salt_commit (
                             url, commit_id_used_to_get_JSON, attempts_to_fix_issue_number, CMS
@@ -132,8 +132,10 @@ def main():
             except mysql.connector.Error as error:
                 errmsg = []
                 errmsg.append("problem at issue insertion")
-                print("Failed to insert record into MySQL table {}\n".format(error))
-                logerr.write("Failed to insert record into MySQL table {}\n".format(error))
+                errmsg.append("problem at issue number {}".format(issue_number))
+                # print("Failed to insert record into MySQL table {}\n".format(error))
+                errmsg.append("Failed to insert record into MySQL table {}".format(error))
+                logerr.write("/n".join(errmsg))
             except Exception as e:
                 logerr.write("Failed to insert record into MySQL table {}\n".format(str(e)))
 
@@ -149,9 +151,12 @@ def main():
                         cursor.execute(commit_query, tuple(commit_list))
                         connection.commit()
                     except mysql.connector.Error as error: 
-                        print("problem at commit insertion")
-                        print("Failed to insert record into MySQL table {}\n".format(error))
-                        logerr.write("Failed to insert record into MySQL table {} \n".format(error))
+                        errmsg = []
+                        errmsg.append("this insert failed {}".format(commit_list))
+                        errmsg.append("problem at commit insertion")
+                        errmsg.append("Failed to insert record into MySQL table {}".format(error))
+                        errmsg.append("----------------------------------------------------")
+                        logerr.write("\n".join(errmsg))
                     except Exception as e:
                         logerr.write("Failed to insert record into MySQL table {} \n".format(str(e)))
                 else:
@@ -169,7 +174,7 @@ def main():
                         errmsg.append("pr_list size is : {}".format(len(pr_list)))
                         errmsg.append("pr_list contents: {}".format(pr_list))
                         errmsg.append("Failed to insert record into MySQL table {}".format(error))
-                        errmsg.append("Failed to insert record into MySQL table {} \n".format(error))
+                        # errmsg.append("Failed to insert record into MySQL table {} \n".format(error))
                         print("Failed to insert record into MySQL table {}\n".format(error))
                         logerr.write("\n".join(errmsg))
                     except Exception as e:
@@ -179,6 +184,7 @@ def main():
         cursor.close()
         connection.close()
         print("MySQL connection is closed")
+        print("Done!")
 
 main()
 
