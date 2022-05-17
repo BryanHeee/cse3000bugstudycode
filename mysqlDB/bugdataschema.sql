@@ -18,7 +18,6 @@ CREATE TABLE `salt_issue` (
   `url` text,
   `created_at` varchar(100) NOT NULL,
   `number` int(11) NOT NULL,
-  `body` text,
   `closed_at` varchar(100) DEFAULT NULL,
   `comments` int(11) DEFAULT NULL,
   `comments_url` text,
@@ -48,7 +47,6 @@ CREATE TABLE `salt_pr` (
   `url` text, -- html url
   `created_at` varchar(100) NOT NULL,
   `number` int(11) NOT NULL,
-  `body` text,
   `closed_at` varchar(100) DEFAULT NULL,
   `merged_at` varchar(100) DEFAULT NULL,
   `merge_commit_sha` text,
