@@ -95,8 +95,7 @@ get_diff_prs_from_comments ()
 find_fixes ()
 {
   local repo=$1
-#   local lang=$2
-  local url=$2   #this is the issue url of 1 issue from one line of the scala.txt file
+  local url=$2   
 
   local owner=$(get_owner)
 
@@ -125,34 +124,9 @@ find_fixes ()
   diff_prs=$(echo $github_api_res | jq '.items[].pull_request.diff_url')
 
 
-  # If both PRs and commits are empty and the lang is scala check in comments
-  # for PRs.
-#   if [ "$lang" == "scala" ]; then
-#     diff_prs_comments=$(get_diff_prs_from_comments $owner $repo $issue)
-#     if [ -z "$diff_prs" ]; then
-#       diff_prs="${diff_prs_comments}"
-#     else
-#       diff_prs="${diff_prs} ${diff_prs_comments}"
-#     fi
-#   fi
 
   local files=""
 
-  # For Java projects we should also check into the mercurial repo
-  # type-annotations/langtools
-#   if [ "$lang" == "java" ] && [ -z "$commits" ]; then
-#     cd $old_pwd && cd $REPOS/type-annotations/langtools
-#     commits_tp=$(hg log --keyword $issue 2> /dev/null | grep changeset | cut -d ':' -f2 | \
-#         sed 's/^ *//;s/ *$//')
-#     if [ -z "$commits" ]; then
-#       commits=$commits_tp
-#     else
-#       commits="${commits} ${commits_tp}"
-#     fi
-#     for commit in $commits_tp; do
-#       files="${files}$(hg log -p -r $commit 2> /dev/null | diffstat -p 0 -l -N 1000)\n"
-#     done
-#   fi
 
   # Get files changed in commits and pull requests
   if [ ! -z "$commits" ]; then
@@ -288,12 +262,30 @@ function process_file ()
 
 main ()
 {
-#   for f in $(ls -d $BUGS/*.txt); do
-    # lang=${f##*/}
-    # lang=${lang%.txt}
-process_file $BUGS/1issue.txt  #salt.txt  # $lang #filename? + the language?
-#   done
+process_file $BUGS/salt.txt 
 }
 
 main
 
+# The code in this file is a modification of the code from https://github.com/hephaestus-compiler-project/types-bug-study-artifact/blob/master/LICENSE
+# MIT License
+
+# Copyright (c) 2021 Stefanos Chaliasos, Thodoris Sotiropoulos, Georgios-Petros Drosos, Charalambos Mitropoulos, Dimitris Mitropoulos, and Diomidis Spinellis
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
